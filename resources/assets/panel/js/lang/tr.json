@@ -1,0 +1,207 @@
+{
+	"fields": {
+		"id": "ID",
+		"name": "İsim",
+		"name_surname": "Ad Soyad",
+		"first_name": "Ad",
+		"last_name": "Soyad",
+		"username": "Kullanıcı Adı",
+		"email": "E-posta",
+		"search": "Arama",
+		"password": "Şifre",
+		"password_confirmation": "Şifre Onayı",
+		"remember_me": "Beni Hatırla",
+		"new_password": "Yeni Şifre",
+		"old_password": "Eski Şifre",
+		"role_name": "Rol Adı",
+		"select_role": "Rol Seç",
+		"status": "Durum",
+		"slug": "Slug",
+		"description": "Açıklama",
+		"order_by": "Sıra",
+		"created_at": "Oluşturulma Tarihi",
+		"updated_at": "Düzenlenme Tarihi"
+	},
+	"buttons": {
+		"yes": "Evet",
+		"no": "Hayır",
+		"login": "Giriş Yap",
+		"submit": "Gönder",
+		"save": "Kaydet",
+		"clear": "Temizle",
+		"cancel": "İptal",
+		"confirm": "Onayla",
+		"edit": "Düzenle",
+		"add": "Ekle",
+		"add_new": "Yeni Ekle",
+		"delete": "Sil",
+		"logout": "Çıkış",
+		"refresh": "Yenile",
+		"close": "Kapat",
+		"close_others": "Diğerlerini Kapat",
+		"close_all": "Hepsini Kapat",
+		"profile": "Profile",
+		"image_upload": "Resim Yükle",
+		"detail": "İncele",
+		"select_avatar": "Avatar Seç"
+	},
+	"menus": {
+		"dashboard":  "Dashboard",
+		"admins": {
+			"title": "Yönetici Paneli",
+			"index": "Yöneticiler",
+			"edit": "Yönetici Düzenle",
+			"create": "Yönetici Ekle"
+		},
+		"categories": {
+			"title": "Kategori Paneli",
+			"index": "Kategoriler",
+			"create": "Kategori Oluştur",
+			"edit": "Kategori Düzenle"
+		},
+		"users": {
+			"title": "Kullanıcı Paneli",
+			"index": "Kullanıcılar",
+			"edit": "Kullanıcı Düzenle",
+			"create": "Kullanıcı Ekle"
+		},
+		"profile": {
+			"title": "Profil Ayarları"
+		},
+		"roles": {
+			"title": "Rol Paneli",
+			"index": "Role Listesi",
+			"create": "Role Oluştur",
+			"edit": "Role Düzenle"
+		},
+		"logs": {
+			"title": "Sistem Kayıtları",
+			"index": "Kayıt Listesi"
+		}
+	},
+	"pages": {
+		"dashboard": {
+			"title": "Dashboard"
+		},
+		"logs": {
+			"title": "İşlem Listesi",
+			"name" : "Kullanıcı",
+			"id": "İşlem No",
+			"action": "İşlem",
+			"action_model": "İşlem Modülü",
+			"ip": "IP No",
+			"created_at": "İşlem Tarihi",
+			"detail": "İncele"
+		},
+		"categories": {
+			"title": "Kategori Yönetimi",
+			"index": "Kategoriler",
+			"create": "Kategori Oluştur",
+			"edit": "Kategori Düzenle"
+		},
+		"users": {
+			"title": "Kullanıcılar",
+			"edit_user": "Kullanıcı Düzenle",
+			"add_user": "Kullanıcı Ekle",
+			"first_name": "Adı",
+			"last_name": "Soyadı",
+			"email": "E-posta",
+			"created_at": "Kayıt Tarihi",
+			"username": "Kullanıcı Adı",
+			"role": "Kullanıcı Rolü",
+			"info": "Kişisel Bilgiler",
+			"account_information": "Hesap Bilgileri",
+			"reset_password": "Şifre Yenileme",
+			"password_rule_1": "Parolanız en az 6 karakter içermelidir.",
+			"password_rule_2": "Parolanızda en az bir rakam içermelidir.",
+			"password_rule_3": "Parolanızda en az bir büyük harf ve küçük hark içermelidir.",
+			"password_information": "Kullanıcının şifresini değiştirmek için yeni şifreyi yazınız."
+		},
+		"admins": {
+			"title": "Yöneticiler",
+			"edit_admin": "Yönetici Düzenle",
+			"add_admin": "Yönetici Ekle",
+			"name_surname": "Ad Soyad",
+			"email": "E-posta",
+			"created_at": "Kayıt Tarihi",
+			"username": "Kullanıcı Adı",
+			"role": "Kullanıcı Rolü",
+			"info": "Kişisel Bilgiler",
+			"account_information": "Hesap Bilgileri",
+			"reset_password": "Şifre Yenileme",
+			"password_rule_1": "Parolanız en az 6 karakter içermelidir.",
+			"password_rule_2": "Parolanızda en az bir rakam içermelidir.",
+			"password_rule_3": "Parolanızda en az bir büyük harf ve küçük hark içermelidir.",
+			"password_information": "Kullanıcının şifresini değiştirmek için yeni şifreyi yazınız."
+		},
+		"login": {
+			"title": "Giriş"
+		},
+		"profile": {
+			"title": "Profil Ayarları",
+			"info": "Kişisel Bilgiler",
+			"account_information": "Hesap Bilgileri",
+			"reset_password": "Şifre Yenileme",
+			"password_rule_1": "Parolanız en az 6 karakter içermelidir.",
+			"password_rule_2": "Parolanızda en az bir rakam içermelidir.",
+			"password_rule_3": "Parolanızda en az bir büyük harf ve küçük hark içermelidir."
+		},
+		"forgotPassword": {
+			"title": "Şifremi Unuttum"
+		},
+		"resetPassword": {
+			"title": "Şifre Sıfırlama"
+		},
+		"roles": {
+			"title": "Rol Yönetimi",
+			"edit_role": "Rol Düzenle",
+			"role_name": "Rol Adı",
+			"add_role": "Role Ekle",
+			"permissions": "İzinler",
+			"menu": "Menü",
+			"access": "Erişim",
+			"create": "Oluşturma",
+			"edit": "Düzenleme",
+			"delete": "Silme",
+			"select_role": "Role Seç"
+		}
+	},
+	"global": {
+		"forgot_password": "Şifremi Unuttum!",
+		"id": "ID",
+		"actions": "İşlemler",
+		"cancel_dialog_title": "Bu işleme devam edilsin mi ?",
+		"other_attribute": "Diğer Bilgiler",
+		"activity": "Hareketler",
+		"settings": "Ayarlar",
+		"active": "Aktif",
+		"passive": "Pasif",
+		"no_role": "Role Yok",
+		"old": "Eski",
+		"new": "Yeni",
+		"form": "Form"
+	},
+	"components": {
+		"avatar_dialog" : {
+			"select_avatar" : "Avatar Seç"
+		}
+	},
+	"validations": {
+
+	},
+	"messages": {
+		"errors" : {
+			"error_500" : "Sunucu hatası! Lütfen site sahibi ile iletişime geçniz",
+			"reset_password": "İşleminiz gerçekleştirilemedi."
+
+		},
+		"success": {
+			"forgot_password" : "E-posta adresinize parola yenileme işlemi için mail gönderildi!",
+			"reset_password": "İşleminiz gerçekleştirildi. Sistemimize giriş yapabilirsiniz"
+		}
+	},
+	"languages": {
+		"tr": "Türkçe",
+		"en": "İngilizce"
+	}
+}

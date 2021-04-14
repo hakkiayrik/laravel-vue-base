@@ -1,0 +1,48 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "axios": "^0.21",
+        "cross-env": "^7.0.3",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "resolve-url-loader": "^3.1.2",
+        "sass": "^1.32.8",
+        "sass-loader": "^10.1.1",
+        "vue-loader": "^15.9.6",
+        "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.9.1",
+        "bootstrap": "^4.6.0",
+        "core-js": "^3.9.1",
+        "jquery": "^3.6.0",
+        "js-cookie": "^2.2.1",
+        "nprogress": "^0.2.0",
+        "path": "^0.12.7",
+        "sortablejs": "^1.13.0",
+        "swiper": "^6.5.0",
+        "validator": "^13.5.2",
+        "vee-validate": "^3.4.5",
+        "vue": "^2.6.12",
+        "vue-confirm-dialog": "^1.0.2",
+        "vue-i18n": "^8.24.2",
+        "vue-json-viewer": "^2.2.18",
+        "vue-router": "^3.5.1",
+        "vue2-editor": "^2.10.2",
+        "vuedraggable": "^2.24.3",
+        "vuetify": "^2.4.8",
+        "vuex": "^3.6.2",
+        "xlsx": "^0.16.9"
+    }
+}
