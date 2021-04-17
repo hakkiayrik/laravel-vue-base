@@ -37,8 +37,10 @@
 							<v-switch
 								v-model="role.permissions"
 								color="success"
+								class="d-inline-block"
 								:value="'access-' + item.name"
 								hide-details
+								dense
 							></v-switch>
 						</template>
 						
@@ -46,9 +48,12 @@
 							<v-switch
 								v-model="role.permissions"
 								color="success"
+								class="d-inline-block"
 								:value="'create-' + item.name"
 								hide-details
+								dense
 								v-if="item.meta.crud"
+								@change="handleRole(item.name)"
 							></v-switch>
 						</template>
 						
@@ -56,9 +61,12 @@
 							<v-switch
 								v-model="role.permissions"
 								color="success"
+								class="d-inline-block"
 								:value="'edit-' + item.name"
 								hide-details
+								dense
 								v-if="item.meta.crud"
+								@change="handleRole(item.name)"
 							></v-switch>
 						</template>
 						
@@ -66,9 +74,12 @@
 							<v-switch
 								v-model="role.permissions"
 								color="success"
+								class="d-inline-block"
 								:value="'delete-' + item.name"
 								hide-details
+								dense
 								v-if="item.meta.crud"
+								@change="handleRole(item.name)"
 							></v-switch>
 						</template>
 					</v-data-table>
@@ -127,18 +138,22 @@ export default {
 				},
 				{
 					text: this.$i18n.t('pages.roles.access'),
+					align: 'center',
 					value: 'access',
 				},
 				{
 					text: this.$i18n.t('pages.roles.create'),
+					align: 'center',
 					value: 'create',
 				},
 				{
 					text: this.$i18n.t('pages.roles.edit'),
+					align: 'center',
 					value: 'edit',
 				},
 				{
 					text: this.$i18n.t('pages.roles.delete'),
+					align: 'center',
 					value: 'delete',
 				}
 			]
@@ -169,6 +184,13 @@ export default {
 			getRole(id).then(response => {
 				this.role = response.data
 			}).then(async response => await this.$refs.form.validate())
+		},
+		handleRole(menuName) {
+			let filterRoles = this.role.permissions.filter(permission => permission === `create-${menuName}` || permission === `edit-${menuName}` || permission === `delete-${menuName}`)
+			
+			if(filterRoles.length >0 || !this.role.permissions.includes(`access-${menuName}`)){
+				this.role.permissions.push(`access-${menuName}`)
+			}
 		},
 		formSubmit() {
 			this.loading = true;

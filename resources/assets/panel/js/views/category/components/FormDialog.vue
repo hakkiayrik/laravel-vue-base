@@ -89,7 +89,7 @@ export default {
 				name: "",
 				description: "",
 				slug: "",
-				order_by: 0
+				order_by: ""
 			},
 			dialog: true
 		}
@@ -101,6 +101,13 @@ export default {
 	},
 	watch: {
 		dialog() {
+			this.category = {
+				id: "",
+				name: "",
+				description: "",
+				slug: "",
+				order_by: 0
+			}
 			this.$emit("dialog", this.dialog);
 		},
 		category: {
@@ -116,6 +123,8 @@ export default {
 			getCategory(id).then(response => {
 				this.loading = false
 				this.category = response.data
+			}).then(async response => {
+				await this.$refs.form.validate()
 			}).catch(err => {this.loading = false})
 		},
 		formSubmit() {
@@ -123,16 +132,16 @@ export default {
 			if (this.selectedCategory) {
 				updateCategory(this.selectedCategory, this.category).then(response => {
 					this.loading = false
-					this.dialog = false
 					this.$emit("refresh", true);
+					this.dialog = false
 				}).catch(err => {
 					this.loading = false
 				})
 			} else {
 				createCategory(this.category).then(response => {
 					this.loading = false
-					this.dialog = false
 					this.$emit("refresh", true);
+					this.dialog = false
 				}).catch(err => {
 					this.loading = false
 				})

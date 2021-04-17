@@ -85,7 +85,7 @@
 		},
 		"logs": {
 			"title": "İşlem Listesi",
-			"name" : "Kullanıcı",
+			"user" : "Kullanıcı",
 			"id": "İşlem No",
 			"action": "İşlem",
 			"action_model": "İşlem Modülü",
@@ -179,7 +179,10 @@
 		"no_role": "Role Yok",
 		"old": "Eski",
 		"new": "Yeni",
-		"form": "Form"
+		"form": "Form",
+		"updated": "Güncelleme",
+		"created": "Ekleme",
+		"deleted": "Silme"
 	},
 	"components": {
 		"avatar_dialog" : {

@@ -49,7 +49,7 @@
 
 <script>
 import { getCategories, deleteCategory } from "../../api/category";
-import FormDialog from './components/FromDialog.vue'
+import FormDialog from './components/FormDialog.vue'
 export default {
 	name: "index",
 	components: {
@@ -157,6 +157,9 @@ export default {
 		},
 		handleDialog(payload) {
 			this.formDialog = payload
+			if(!payload) {
+				this.selectedCategory = ""
+			}
 		},
 		refreshData() {
 			this.initialize();

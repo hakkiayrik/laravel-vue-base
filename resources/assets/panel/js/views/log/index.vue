@@ -40,10 +40,13 @@
 								<v-toolbar-title>{{ $t('pages.logs.title') }}</v-toolbar-title>
 							</v-toolbar>
 						</template>
+						<template v-slot:item.user="{ item }">
+							{{ item.user.first_name }} {{ item.user.last_name }}
+						</template>
 						<template v-slot:item.action="{ item }">
-							<v-chip color="primary" label v-if="item.action == 'updated'">{{ item.action }}</v-chip>
-							<v-chip color="green" text-color="white" label v-if="item.action == 'created'">{{ item.action }}</v-chip>
-							<v-chip color="danger"  label v-if="item.action == 'deleted'">{{ item.action }}</v-chip>
+							<v-chip color="primary" small v-if="item.action == 'updated'">{{ $t("global." + item.action) }}</v-chip>
+							<v-chip color="success" small text-color="white" v-if="item.action == 'created'">{{ $t("global." + item.action) }}</v-chip>
+							<v-chip color="error" small v-if="item.action == 'deleted'">{{ $t("global." + item.action) }}</v-chip>
 						</template>
 						<template v-slot:item.actions="{ item }">
 							<v-btn outlined small @click="openLogDetailDialog(item)" v-permission="['access-log']">{{$t("pages.logs.detail")}}</v-btn>
@@ -86,14 +89,9 @@ export default {
 					
 				},
 				{
-					text: this.$i18n.t('pages.logs.name'),
+					text: this.$i18n.t('pages.logs.user'),
 					align: 'center',
-					value: 'user.name'
-				},
-				{
-					text: this.$i18n.t('pages.logs.action'),
-					align: 'center',
-					value: 'action'
+					value: 'user'
 				},
 				{
 					text: this.$i18n.t('pages.logs.action_model'),
@@ -101,14 +99,19 @@ export default {
 					value: 'action_model'
 				},
 				{
+					text: this.$i18n.t('pages.logs.created_at'),
+					align: 'center',
+					value: 'created_at'
+				},
+				{
 					text: this.$i18n.t('pages.logs.ip'),
 					align: 'center',
 					value: 'ip'
 				},
 				{
-					text: this.$i18n.t('pages.logs.created_at'),
+					text: this.$i18n.t('pages.logs.action'),
 					align: 'center',
-					value: 'created_at'
+					value: 'action'
 				},
 				{
 					text: this.$i18n.t('global.actions'),
