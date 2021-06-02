@@ -1,8 +1,9 @@
 <template>
 	<v-app id="inspire">
-		<sidebar class="sidebar-container" :class="{'fixed-header':fixedHeader}"/>
+		<sidebar class="sidebar-container"/>
 		<navbar />
 		<app-main />
+		<setting-menu />
 		<snackbar />
 		<vue-confirm-dialog />
 	</v-app>
@@ -10,7 +11,7 @@
 
 <script>
 import Snackbar from '../components/SnackBar'
-import { AppMain, Navbar, Sidebar } from './components'
+import { AppMain, Navbar, Sidebar, SettingMenu } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
@@ -18,6 +19,7 @@ export default {
   name: 'Layout',
   components: {
     AppMain,
+	SettingMenu,
     Navbar,
     Sidebar,
 	Snackbar
@@ -26,7 +28,6 @@ export default {
   computed: {
     ...mapState({
       sidebar: state => state.app.sidebar,
-      fixedHeader: state => state.settings.fixedHeader
     }),
     classObj() {
       return {
@@ -44,3 +45,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+	.fixed-header {
+		position: fixed!important;
+		top: 0!important;
+		right: 0!important;
+		z-index: 9!important;
+		width: calc(100% - 256px)!important;
+		transition: width 0.28s;
+	}
+</style>

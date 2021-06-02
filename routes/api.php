@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\v1\Panel\AuthController;
 use App\Http\Controllers\Api\v1\Panel\AvatarController;
 use App\Http\Controllers\Api\v1\Panel\CategoryController;
 use App\Http\Controllers\Api\v1\Panel\LogController;
+use App\Http\Controllers\Api\v1\Panel\MediaController;
+use App\Http\Controllers\Api\v1\Panel\PostController;
 use App\Http\Controllers\Api\v1\Panel\RoleController;
 use App\Http\Controllers\Api\v1\Panel\UserController;
 use Illuminate\Http\Request;
@@ -67,6 +69,15 @@ Route::namespace('Api\v1')->prefix('v1')->group(function () {
 			Route::post('category', [CategoryController::class, 'store'])->name('category.store')->middleware(['permission:create-category']);
 			Route::match(['PUT', 'PATCH'], 'category/{category}', [CategoryController::class, 'update'])->name('category.update')->middleware(['permission:edit-category']);
 			Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.delete')->middleware(['permission:delete-category']);
+
+			Route::get('post', [PostController::class, 'index'])->name('post.index')->middleware(['permission:access-post']);
+			Route::get('post/{post}', [PostController::class, 'show'])->name('post.show')->middleware(['permission:edit-post']);
+			Route::post('post', [PostController::class, 'store'])->name('post.store')->middleware(['permission:create-post']);
+			Route::match(['PUT', 'PATCH'], 'post/{post}', [PostController::class, 'update'])->name('post.update')->middleware(['permission:edit-post']);
+			Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.delete')->middleware(['permission:delete-post']);
+
+			Route::get('media', [MediaController::class, 'index'])->name('media.index');
+			Route::post('media', [MediaController::class, 'store'])->name('media.store')->middleware(['permission:create-media']);
 		});
 	});
 });

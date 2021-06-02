@@ -57,7 +57,7 @@
 											dense
 										></v-text-field>
 									</validation-provider>
-									<v-btn color="primary" block @click="updateInfo" :loading="loadingInfo">{{$t("buttons.save")}}</v-btn>
+									<v-btn color="primary"  @click="updateInfo" :loading="loadingInfo">{{$t("buttons.save")}}</v-btn>
 								</v-form>
 							</validation-observer>
 						</v-card-text>
@@ -101,7 +101,7 @@
 										<li>{{$t("pages.profile.password_rule_2")}}</li>
 										<li>{{$t("pages.profile.password_rule_3")}}</li>
 									</ul>
-									<v-btn color="primary" class="mt-2" :disabled="invalid" block @click="updatePassword" :loading="loadingPassword">{{$t("buttons.save")}}</v-btn>
+									<v-btn color="primary" class="mt-2" :disabled="invalid" @click="updatePassword" :loading="loadingPassword">{{$t("buttons.save")}}</v-btn>
 								</v-form>
 							</validation-observer>
 						</v-card-text>

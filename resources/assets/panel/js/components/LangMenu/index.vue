@@ -1,7 +1,7 @@
 <template>
 	<v-menu open-on-hover bottom offset-y transition="slide-y-transition">
 		<template v-slot:activator="{ on, attrs }">
-			<v-btn icon color="white" class="ml-3" tile  v-bind="attrs" v-on="on">
+			<v-btn icon class="ml-3" tile  v-bind="attrs" v-on="on">
 				<v-icon>g_translate</v-icon>
 			</v-btn>
 		</template>

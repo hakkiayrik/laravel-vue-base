@@ -11,6 +11,8 @@ import vuetify from './plugins/vuetify'
 import permission from './directive/permission/index.js'
 import VueConfirmDialog from 'vue-confirm-dialog'
 
+import * as filters from './filters'
+
 Vue.use(VueConfirmDialog)
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 
@@ -20,6 +22,10 @@ Vue.config.productionTip = false
 
 Vue.config.productionTip = process.env.NODE_ENV === 'production'
 
+// register global utility filters
+Object.keys(filters).forEach(key => {
+	Vue.filter(key, filters[key])
+})
 
 new Vue({
 	router,

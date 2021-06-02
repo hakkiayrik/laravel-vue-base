@@ -1,11 +1,12 @@
-
+import Cookies from 'js-cookie'
 import defaultSettings from '../../settings'
 
-const { tagsView, fixedHeader} = defaultSettings
-
+const { tagsView, fixedHeader, darkTheme} = defaultSettings
+console.log(!!+Cookies.get('darkTheme'))
 const state = {
   tagsView: tagsView,
   fixedHeader: fixedHeader,
+  darkTheme: Cookies.get('darkTheme') ? !!+Cookies.get('darkTheme') : darkTheme,
 }
 
 const mutations = {

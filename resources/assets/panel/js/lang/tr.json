@@ -2,6 +2,7 @@
 	"fields": {
 		"id": "ID",
 		"name": "İsim",
+		"title": "Başlık",
 		"name_surname": "Ad Soyad",
 		"first_name": "Ad",
 		"last_name": "Soyad",
@@ -20,7 +21,13 @@
 		"description": "Açıklama",
 		"order_by": "Sıra",
 		"created_at": "Oluşturulma Tarihi",
-		"updated_at": "Düzenlenme Tarihi"
+		"updated_at": "Düzenlenme Tarihi",
+		"category": "Kategori",
+		"select_category": "Kategori Seç",
+		"select_image": "Resim Seç",
+		"add_youtube_video_url": "Youtube Video Url",
+		"meta_keywords":  "Meta Anahtarları",
+		"meta_description":  "Meta Açıklaması"
 	},
 	"buttons": {
 		"yes": "Evet",
@@ -43,7 +50,10 @@
 		"profile": "Profile",
 		"image_upload": "Resim Yükle",
 		"detail": "İncele",
-		"select_avatar": "Avatar Seç"
+		"select_avatar": "Avatar Seç",
+		"add_media": "Medya Ekle",
+		"upload_all": "Hepsini Yükle",
+		"remove_all": "Hepsini Sil"
 	},
 	"menus": {
 		"dashboard":  "Dashboard",
@@ -73,6 +83,18 @@
 			"index": "Role Listesi",
 			"create": "Role Oluştur",
 			"edit": "Role Düzenle"
+		},
+		"posts": {
+			"title": "Yazı Paneli",
+			"index": "Yazı Listesi",
+			"create": "Yazı Oluştur",
+			"edit": "Yazı Düzenle"
+		},
+		"media": {
+			"title": "Medya Paneli",
+			"index": "Medya",
+			"create": "Medya Oluştur",
+			"edit": "Medya Düzenle"
 		},
 		"logs": {
 			"title": "Sistem Kayıtları",
@@ -164,6 +186,32 @@
 			"edit": "Düzenleme",
 			"delete": "Silme",
 			"select_role": "Role Seç"
+		},
+		"posts": {
+			"title": "Yazı Yönetimi",
+			"edit_post": "Yazı Düzenle",
+			"post_name": "Yazı Adı",
+			"add_post": "Yazı Ekle",
+			"permissions": "İzinler",
+			"menu": "Menü",
+			"access": "Erişim",
+			"create": "Oluşturma",
+			"edit": "Düzenleme",
+			"delete": "Silme",
+			"select_post": "Role Seç",
+			"types": {
+				"article": "Makale",
+				"video": "Video Paylaşımı"
+			}
+		},
+		"media": {
+			"title": "Medya Yönetimi",
+			"media_list": "Medya Listesi",
+			"upload_media": "Media Yükle",
+			"upload_media_message": "Dosya yüklemek için sürekle bırak yaparak veya tıklayıp dosya seçebilirsiniz",
+			"max_upload_size_message": "En fazla {max_upload_size} boyutunda dosya yükleyebilirsiniz",
+			"max_upload_error_message": "En fazla {max_upload} dosya ekleyebilirsiniz",
+			"max_file_size_error_message": "{file_name} dosyasının boyutu çok büyük."
 		}
 	},
 	"global": {
@@ -177,12 +225,30 @@
 		"active": "Aktif",
 		"passive": "Pasif",
 		"no_role": "Role Yok",
+		"general": "Genel",
 		"old": "Eski",
 		"new": "Yeni",
 		"form": "Form",
 		"updated": "Güncelleme",
 		"created": "Ekleme",
-		"deleted": "Silme"
+		"deleted": "Silme",
+		"error_logs":  "Hata Mesajları",
+		"dark_theme": "Gece Modu",
+		"panel_settings": "Panel Ayarları",
+		"tags_view": "Sayfa Etiketleri",
+		"fixed_app_bar": "Sabit Üst Menü",
+		"status": "Durum",
+		"visibility": "Görünürlük",
+		"public": "Genel",
+		"private": "Özel",
+		"published": "Yayınlandı",
+		"not_published": "Yayınlanmadı",
+		"published_date": "Yayınlanma Tarihi",
+		"add_media": "Medya Ekle",
+		"video": "Video",
+		"image": "Resim",
+		"is_must": "Zorunlu",
+		"type": "Tip"
 	},
 	"components": {
 		"avatar_dialog" : {
@@ -195,8 +261,8 @@
 	"messages": {
 		"errors" : {
 			"error_500" : "Sunucu hatası! Lütfen site sahibi ile iletişime geçniz",
-			"reset_password": "İşleminiz gerçekleştirilemedi."
-
+			"reset_password": "İşleminiz gerçekleştirilemedi.",
+			"max_image_error": "Dosya boyutu 2 MB'dan fazla olamaz"
 		},
 		"success": {
 			"forgot_password" : "E-posta adresinize parola yenileme işlemi için mail gönderildi!",

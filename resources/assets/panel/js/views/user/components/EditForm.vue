@@ -93,6 +93,7 @@
 								</v-card>
 							</v-tab-item>
 							<v-tab-item value="tab-settings">
+								<validation-observer ref="form" v-slot="{ invalid, validated, passes, validate }">
 									<v-form @keyup.native.enter="passes(formSubmit)">
 										<v-card flat>
 											<v-card-title>{{ $t("fields.status") }}</v-card-title>
@@ -134,7 +135,7 @@
 											</v-card-text>
 										</v-card>
 									</v-form>
-								
+								</validation-observer>
 							</v-tab-item>
 						</v-tabs-items>
 					</v-card>

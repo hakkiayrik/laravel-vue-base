@@ -1,0 +1,24 @@
+import request from '../utils/request'
+
+export function getMedia(query) {
+	return request({
+		url: 'media',
+		method: 'get',
+		params: query
+	})
+}
+
+export function uploadMedia(data) {
+	return request({
+		url: `media`,
+		method: 'post',
+		data
+	})
+}
+
+export function deleteMedia(id) {
+	return request({
+		url: `media/${id}`,
+		method: 'delete'
+	})
+}

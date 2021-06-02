@@ -1,28 +1,33 @@
 <template>
-	<div id="tags-view-container" class="tags-view-container">
-		<v-slide-group ref="scrollPane" class="tags-view-wrapper py-1">
-			<router-link
+	<v-card id="tags-view-container" class="tags-view-container">
+		<v-chip-group multiple ref="scrollPane" class="tags-view-wrapper py-1">
+			<v-chip
 				v-for="tag in visitedViews"
-				ref="tag"
 				:key="tag.path"
+				:ripple="false"
+				link
+				ref="tag"
+				class="tags-view-item my-0 mr-0 ml-2 rounded-0"
 				:class="isActive(tag)?'active':''"
-				:to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
-				tag="span"
-				class="tags-view-item"
+				:color="isActive(tag)?'success': ''"
 				@click.middle.native="!isAffix(tag)?closeSelectedTag(tag):''"
 				@contextmenu.prevent.native="openMenu(tag,$event)"
+				:to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
+				label
+				flat
 			>
 				{{ $t("menus." + tag.title) }}
 				<v-btn v-if="!isAffix(tag)" @click.prevent.stop="closeSelectedTag(tag)" icon small> <v-icon>close</v-icon> </v-btn>
-			</router-link>
-		</v-slide-group>
+			</v-chip>
+			
+		</v-chip-group>
 		<ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
 			<li @click="refreshSelectedTag(selectedTag)">{{ $t('buttons.refresh') }}</li>
 			<li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">{{ $t('buttons.close') }}</li>
 			<li @click="closeOthersTags">{{ $t('buttons.close_others') }}</li>
 			<li @click="closeAllTags(selectedTag)">{{ $t('buttons.close_all') }}</li>
 		</ul>
-	</div>
+	</v-card>
 </template>
 
 <script>
@@ -198,7 +203,6 @@ export default {
 <style lang="scss" scoped>
 .tags-view-container {
 	width: 100%;
-	background: #fff;
 	border-bottom: 1px solid #d8dce5;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
 	
@@ -209,9 +213,6 @@ export default {
 			cursor: pointer;
 			height: 26px;
 			line-height: 26px;
-			border: 1px solid #d8dce5;
-			color: #495060;
-			background: #fff;
 			padding: 0 8px;
 			font-size: 12px;
 			margin-left: 5px;
@@ -226,19 +227,20 @@ export default {
 			}
 			
 			&.active {
-				background-color: #42b983;
-				color: #fff;
-				border-color: #42b983;
+				background-color: #42b983!important;
+				color: #fff!important;
+				border-color: #42b983!important;
 				
 				&::before {
 					content: '';
 					background: #fff;
 					display: inline-block;
-					width: 8px;
-					height: 8px;
+					width: 5px;
+					height: 5px;
 					border-radius: 50%;
 					position: relative;
-					margin-right: 2px;
+					margin-right: 5px;
+					opacity: 1;
 				}
 			}
 		}

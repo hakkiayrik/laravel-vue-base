@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Panel;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DataTableRequest;
 use App\Http\Resources\UserCollection;
 use App\Models\Avatar;
 use App\Models\UserLog;
@@ -21,22 +22,11 @@ class UserController extends BaseController
     /**
      * Display a listing of the resource.
 	 *
-	 * @param Request $request
+	 * @param DataTableRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(Request $request)
+    public function index(DataTableRequest $request)
     {
-    	$validator = Validator::make($request->all(), [
-    		'sortBy' => 'array',
-			'sortDesc' => 'array',
-			'page' => 'required|integer',
-			'itemsPerPage' => 'required|max:250|integer',
-		]);
-
-		if ($validator->fails()) {
-			return $this->sendResponse([]);
-		}
-
 		$sortBy = $request->input('sortBy', []);
 		$sortDesc = $request->input('sortDesc', []);
 		$itemPerPage = $request->input('itemPerPage');

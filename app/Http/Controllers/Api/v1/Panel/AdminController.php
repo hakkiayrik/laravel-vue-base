@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1\Panel;
 
+use App\Http\Requests\DataTableRequest;
 use App\Models\Admin;
 use App\Helpers\Logger\DbLog;
 use App\Helpers\Logger\Logger;
@@ -20,22 +21,11 @@ class AdminController extends BaseController
     /**
      * Display a listing of the resource.
      *
-	 * @param Request $request
+	 * @param DataTableRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(Request $request)
+    public function index(DataTableRequest $request)
     {
-    	$validator = Validator::make($request->all(), [
-    		'sortBy' => 'array',
-			'sortDesc' => 'array',
-			'page' => 'required|integer',
-			'itemsPerPage' => 'required|max:250|integer',
-		]);
-
-		if ($validator->fails()) {
-			return $this->sendResponse([]);
-		}
-
 		$sortBy = $request->input('sortBy', []);
 		$sortDesc = $request->input('sortDesc', []);
 		$itemPerPage = $request->input('itemPerPage');

@@ -14,7 +14,7 @@ class Category extends JsonResource
      */
     public function toArray($request)
     {
-		return [
+    	$data = [
 			'id' => $this->id,
 			'name' => $this->name,
 			'description' => $this->description,
@@ -22,5 +22,9 @@ class Category extends JsonResource
 			'order_by' => $this->order_by,
 			'created_at' => $this->created_at->format('Y-m-d H:i:s')
 		];
+
+    	$data = array_merge($data, $this->getTranslationsArray());
+
+		return $data;
     }
 }

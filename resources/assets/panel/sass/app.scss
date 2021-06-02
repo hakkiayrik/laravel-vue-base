@@ -1,1 +1,66 @@
 @import "transition";
+
+
+/* outline tab */
+
+.border-top-0 {border-top: none!important;}
+.border-bottom-0 {border-bottom: none!important;}
+.border-right-0 {border-right: none!important;}
+.border-left-0 {border-left: none!important;}
+
+.outline-tabs-wrapper {
+	position: relative;
+
+	.v-tabs-bar {
+		z-index: 5;
+	}
+
+	&:before {
+		position: absolute;
+		content: " ";
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		border-bottom: thin solid rgba(0,0,0,.12);
+		z-index: 1;
+	}
+
+	.outline-tab {
+		text-transform: capitalize;
+		border: thin solid rgba(0,0,0,.12);
+		border-bottom: none;
+		z-index: 2!important;
+
+		&.tab-dark {
+			background: #3e3e3e;
+
+			&.active-tab {
+				background: #1e1e1e!important;
+				color: #fff!important;
+			}
+		}
+
+		&.tab-light {
+			background: #e8e8e8!important;
+			&.active-tab {
+				background: #fff!important;
+				color: #1e1e1e!important;
+			}
+		}
+	}
+
+	&.theme--dark {
+		&:before{
+			border-bottom: thin solid hsla(0,0%,100%,.12)!important;
+		}
+
+		.outline-tab {
+			border: thin solid hsla(0,0%,100%,.12)!important;
+			border-bottom: none!important;
+		}
+	}
+
+	.outline-tab-item {
+		border-top:none;
+	}
+}

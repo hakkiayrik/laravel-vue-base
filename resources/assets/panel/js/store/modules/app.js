@@ -13,7 +13,7 @@ const state = {
 		vertical: false,
 		text: "",
 		timeout: 5000,
-	}
+	},
 }
 
 const mutations = {
@@ -54,11 +54,10 @@ const mutations = {
 	},
 	SET_SIZE: (state, size) => {
 		state.size = size
-		Cookies.set('size', size)
 	},
 	SET_LANGUAGE: (state, lang) => {
-		state.language = lang
 		Cookies.set('language', lang)
+		state.language = lang
 	}
 }
 

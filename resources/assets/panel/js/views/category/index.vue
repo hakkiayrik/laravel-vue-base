@@ -57,6 +57,7 @@ export default {
 	},
 	data() {
 		return {
+			defaultLangCode : process.env.MIX_DEFAULT_LANGUAGE,
 			loading: false,
 			options: {},
 			search: "",

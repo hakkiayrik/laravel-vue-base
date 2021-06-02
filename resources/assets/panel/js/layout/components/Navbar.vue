@@ -1,14 +1,19 @@
 <template>
-	<v-app-bar app color="primary" elevation="0" dense dark id="headerTopBar">
+	<v-app-bar app color="primary" elevation="0" dense dark id="headerTopBar" :absolute="fixedHeader">
 		<v-app-bar-nav-icon @click="toggleSideBar()"></v-app-bar-nav-icon>
 		<breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
 		
 		<v-spacer></v-spacer>
-		<v-badge color="yellow" overlap dot>
-			<v-btn color="red" fab x-small  class="ml-3">
-				<v-icon color="white" dark>bug_report</v-icon>
-			</v-btn>
-		</v-badge>
+		<v-tooltip bottom>
+			<template v-slot:activator="{ on, attrs }">
+				<v-badge color="yellow" overlap dot>
+					<v-btn color="red" fab x-small  class="ml-3" v-bind="attrs" v-on="on" dark>
+						<v-icon color="white" dark>bug_report</v-icon>
+					</v-btn>
+				</v-badge>
+			</template>
+			<span>{{ $t('global.error_logs') }}</span>
+		</v-tooltip>
 		
 		<lang-menu></lang-menu>
 		
@@ -55,7 +60,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 import Breadcrumb from '../../components/Breadcrumb'
 import LangMenu from '../../components/LangMenu'
 
@@ -70,7 +75,10 @@ export default {
 			'avatar',
 			'device',
 			'user'
-		])
+		]),
+		...mapState({
+			fixedHeader: state => state.settings.fixedHeader
+		}),
 	},
 	methods: {
 		toggleSideBar() {

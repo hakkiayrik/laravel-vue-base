@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1\Panel;
 
+use App\Http\Requests\DataTableRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Category as CategoryResource;
@@ -19,19 +20,8 @@ class CategoryController extends Controller
 	 * @param Request $request
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-    public function index(Request $request)
+    public function index(DataTableRequest $request)
     {
-		$validator = Validator::make($request->all(), [
-			'sortBy' => 'array',
-			'sortDesc' => 'array',
-			'page' => 'required|integer',
-			'itemsPerPage' => 'required|max:250|integer',
-		]);
-
-		if ($validator->fails()) {
-			return $this->sendResponse([]);
-		}
-
 		$sortBy = $request->input('sortBy', []);
 		$sortDesc = $request->input('sortDesc', []);
 		$itemPerPage = $request->input('itemPerPage');
@@ -62,24 +52,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-		$validator = Validator::make($request->all(), [
-			"name" => "required|max:25|min:2",
-			"slug" => "required|max:50|min:3|unique:categories",
-			"order_by" => "required|email|unique:admins",
-		]);
-
-		if($validator->fails()) {
-			$this->error($validator->errors(), '',400);
-		}
-
-		$category = new Category();
-
-		$category->name = $request->name;
-		$category->slug = $request->slug;
-		$category->description = $request->description;
-		$category->order_by = $request->order_by;
-		$category->save();
-
+		$category = Category::create($request->all());
 		return $this->success('', __('panel.transaction_success'));
     }
 
@@ -104,23 +77,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-		$validator = Validator::make($request->all(), [
-			"name" => "required|max:25|min:2",
-			"slug" => "required|max:50|min:3|unique:categories",
-			"order_by" => "required|email|unique:admins",
-		]);
-
-		if($validator->fails()) {
-			$this->error($validator->errors(), '',400);
-		}
-
-		$category = Category::findOrFail($id);
-
-		$category->name = $request->name;
-		$category->slug = $request->slug;
-		$category->description = $request->description;
-		$category->order_by = $request->order_by;
-		$category->save();
+		$category = Category::findOrFail($id)->update($request->all());
 
 		return $this->success('', __('panel.transaction_success'));
     }

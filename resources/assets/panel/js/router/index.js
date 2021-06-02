@@ -10,6 +10,8 @@ import userRoutes from './modules/user'
 import roleRoutes from './modules/role'
 import categoryRoutes from './modules/category'
 import logRoutes from './modules/log'
+import postRoutes from './modules/post'
+import mediaRoutes from './modules/media'
 
 
 Vue.use(Router)
@@ -110,8 +112,10 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
 	categoryRoutes,
-	adminRoutes,
+	postRoutes,
+	mediaRoutes,
 	userRoutes,
+	adminRoutes,
 	roleRoutes,
 	logRoutes,
 	{ path: '*', redirect: '/404', hidden: true }

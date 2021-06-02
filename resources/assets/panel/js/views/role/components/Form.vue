@@ -83,7 +83,7 @@
 							></v-switch>
 						</template>
 					</v-data-table>
-					<v-btn color="primary" @click="formSubmit" :disabled="invalid || !validated" :loading="loading">{{ $t("buttons.save") }}</v-btn>
+					<v-btn color="primary" class="my-2" @click="formSubmit" :disabled="invalid || !validated" :loading="loading">{{ $t("buttons.save") }}</v-btn>
 				</v-form>
 			</validation-observer>
 		</v-container>
