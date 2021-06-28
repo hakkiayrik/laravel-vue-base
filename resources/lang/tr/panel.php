@@ -14,5 +14,6 @@ return [
 	*/
 
 	'transaction_success' => 'İşleminiz başarıyla gerçekleştirildi',
-
+	'file_uploaded' => 'Dosya başarıyla yüklendi.',
+	'file_upload_error' => 'Dosya yükleme işlemi başarısız'
 ];

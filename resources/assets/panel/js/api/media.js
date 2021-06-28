@@ -4,7 +4,6 @@ export function getMedia(query) {
 	return request({
 		url: 'media',
 		method: 'get',
-		params: query
 	})
 }
 

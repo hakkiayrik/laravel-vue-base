@@ -11,7 +11,7 @@
 				{{ message }}
 			</v-alert>
 			<!-- New Addition -->
-			<v-row class="d-flex flex-column mb-5" dense align="center" justify="center">
+			<v-row class="d-flex flex-column mb-5" dense align="center" justify="center" v-if="!uploadLoading">
 				<v-icon class="mt-5" size="60">cloud_upload</v-icon>
 				<h3 class="bold">{{ $t("pages.media.upload_media_message") }}</h3>
 				<v-subheader class="font-italic">{{ $t("pages.media.max_upload_size_message",  { max_upload_size:  Math.round( (maxFileSize / 1024) *100) / 100 + " MB"  } )  }}</v-subheader>
@@ -26,6 +26,10 @@
 					</v-btn>
 				</div>
 			</v-row>
+			<v-row class="d-flex flex-column mb-5" dense align="center" justify="center" v-if="uploadLoading">
+				<v-progress-circular indeterminate rounded width="7" size="50" class="my-10"></v-progress-circular>
+				<h3 class="bold">{{ $t("pages.media.uploading_media_message") }}</h3>
+			</v-row>
 			<v-list v-if="uploadFiles.length > 0" dense>
 				<template v-for="(item, index) in uploadFiles">
 					<v-divider></v-divider>
@@ -37,15 +41,18 @@
 								<span class="ml-3 text--secondary">{{ item.size }} bytes</span>
 							</v-list-item-title>
 						</v-list-item-content>
-						<v-list-item-action>
+						<v-list-item-action v-if="!loading">
 							<v-btn icon color="primary" @click="uploadItem(index)">
 								<v-icon>file_upload</v-icon>
 							</v-btn>
 						</v-list-item-action>
-						<v-list-item-action>
+						<v-list-item-action v-if="!loading">
 							<v-btn icon color="error" @click="removeItem(index)">
 								<v-icon>cancel</v-icon>
 							</v-btn>
+						</v-list-item-action>
+						<v-list-item-action v-if="loading">
+							<v-progress-circular :value="80" indeterminate></v-progress-circular>
 						</v-list-item-action>
 					</v-list-item>
 				</template>
@@ -79,11 +86,13 @@ export default {
 	},
 	data() {
 		return {
+			loading: false,
 			dragover: false,
-			uploadLoading: true,
+			uploadLoading: false,
 			uploadFileData: null,
 			uploadFiles: [],
 			uploadMessage: [],
+			isSuccess: [],
 		};
 	},
 	methods: {
@@ -113,12 +122,14 @@ export default {
 		},
 		uploadItem(index) {
 			this.loading = true
+			this.uploadLoading = true
 			const formData = new FormData()
 			
 			formData.append('files', this.uploadFiles[index]);
 			console.log(this.files);
 			uploadMedia(formData).then(response => {
 				this.loading = false
+				this.uploadLoading = false
 				this.uploadFileData = null
 			}).catch(err=>{ this.loading = false })
 		},
@@ -127,16 +138,16 @@ export default {
 		},
 		uploadItems() {
 			this.loading = true
+			this.uploadLoading = true
 			const formData = new FormData()
 			
 			let uploadData = this.uploadFiles.map(file => {
-				console.log(file)
 				formData.append('files[]', file);
 			})
 			
-			console.log(formData);
 			uploadMedia(formData).then(response => {
 				this.loading = false
+				this.uploadLoading = false
 				this.uploadFileData = null
 			}).catch(err=>{ this.loading = false })
 		},
@@ -148,5 +159,7 @@ export default {
 </script>
 
 <style scoped>
-
+	.loading-progress {
+		width: 100px;
+	}
 </style>

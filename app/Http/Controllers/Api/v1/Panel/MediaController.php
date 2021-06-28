@@ -33,39 +33,47 @@ class MediaController extends Controller
      */
     public function store(FileUploadRequest $request)
     {
+		$requestData = $request->all();
 
-		echo "<pre>";
-		var_dump($request->input('files'));
-		echo "</pre>";
-
-		die;
-
-    	$fileData = array();
-    	if($request->hasFile('files')) {
-			$image = $request->file("files");
-			$path = config('variables.path.media');
-			$extension = $image->extension();
-			$fileName =  create_file_name($path, $extension);
-			$image->storeAs($path, $fileName);
-
-			$fileData[] = $fileName;
-		} else if(is_array($request->input('files')) && count($request->input('files')) > 0) {
-    		$files = $request->input('files');
-			foreach ($files as $file) {
+    	if (is_array($requestData["files"]) && count($requestData["files"]) > 0) {
+			foreach ($requestData["files"] as $file) {
 				$image = $file;
 				$path = config('variables.path.media');
+				try {
+					$extension = $image->extension();
+					$fileName = create_file_name($path, $extension);
+					$image->storeAs($path, $fileName);
+
+					$imageData['url'] = $path . $fileName;
+					$imageData['name'] = $fileName;
+					$image = Image::create($imageData);
+
+					$uploadRequest['success'][] = $image->name . " - " . __('panel.file_uploaded');
+				} catch (\Exception $e) {
+					$uploadRequest['error'][] = $image->name . " - " . __('panel.file_uploaded') . "(" . $e->getMessage() . ")";
+				}
+
+			}
+		} else {
+			$image = $request->file("files");
+			$path = config('variables.path.media');
+			try {
 				$extension = $image->extension();
 				$fileName = create_file_name($path, $extension);
+				$image->storeAs($path, $fileName);
 
-				$fileData[] = $fileName;
+				$imageData['url'] = $path . $fileName;
+				$imageData['name'] = $fileName;
+				$image = Image::create($imageData);
+				$uploadRequest[] = $image;
+
+				$uploadRequest['success'] = $image->name . __('panel.file_uploaded');
+			} catch (\Exception $e) {
+				$uploadRequest['error'] = $image->name . __('panel.file_uploaded') . "(" . $e->getMessage() . ")";
 			}
 		}
 
-		echo "<pre>";
-		print_r($fileData);
-		echo "</pre>";
-
-		die;
+		return $this->success($uploadRequest);
 	}
 
     /**

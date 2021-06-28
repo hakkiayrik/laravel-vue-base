@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ae6c90f-ddb7-40fc-8b24-c3c21fda9301" name="Default Changelist" comment="" />
+    <list default="true" id="8ae6c90f-ddb7-40fc-8b24-c3c21fda9301" name="Default Changelist" comment="Düzenlemeler">
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-vue-base.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-vue-base.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Image.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/api/media.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/api/media.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/lang/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/lang/tr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/layout/components/TagsView/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/layout/components/TagsView/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/views/media/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/views/media/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/tr/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/tr/panel.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,10 +26,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="package.json" />
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -143,11 +159,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vue-material-dashboard-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sinav" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -155,11 +172,11 @@
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\views\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\mixins" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\app" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\lang" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\lang\en" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\views" />
-      <recent name="C:\wamp64\www\Laravel\laravel-vue-base\app\Http\Controllers" />
     </key>
   </component>
   <component name="RunManager">
@@ -180,52 +197,109 @@
       <workItem from="1617475391878" duration="28250000" />
       <workItem from="1617910912176" duration="4106000" />
       <workItem from="1618002465881" duration="23404000" />
+      <workItem from="1618175931392" duration="20190000" />
+      <workItem from="1618606542430" duration="66808000" />
+      <workItem from="1618949817472" duration="22449000" />
+      <workItem from="1619184741188" duration="12731000" />
+      <workItem from="1619258824181" duration="35141000" />
+      <workItem from="1619467195760" duration="8643000" />
+      <workItem from="1619735384074" duration="5687000" />
+      <workItem from="1619788610206" duration="40805000" />
+      <workItem from="1620369413830" duration="32549000" />
+      <workItem from="1620932574418" duration="536000" />
+      <workItem from="1621087592122" duration="18081000" />
+      <workItem from="1621180144717" duration="25025000" />
+      <workItem from="1621451425527" duration="610000" />
+      <workItem from="1621681344302" duration="27736000" />
+      <workItem from="1622287879135" duration="18913000" />
+      <workItem from="1622985287952" duration="2429000" />
+      <workItem from="1623188599624" duration="3875000" />
+      <workItem from="1623526201307" duration="1187000" />
+      <workItem from="1623927854075" duration="597000" />
+      <workItem from="1624194608560" duration="34162000" />
     </task>
+    <task id="LOCAL-00001" summary="role sayfasında düzenlemeler">
+      <created>1618669107161</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618669107161</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Düzenlemeler">
+      <created>1622672707669</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622672707670</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="role sayfasında düzenlemeler" />
+    <MESSAGE value="Düzenlemeler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Düzenlemeler" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1085" y="387" key="#com.intellij.ide.util.MemberChooser" timestamp="1618095717765">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1085" y="387" key="#com.intellij.ide.util.MemberChooser/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618095717765" />
-    <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618154103649">
+    <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1624709420919">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618154103649" />
-    <state x="1699" y="463" key="FileChooserDialogImpl" timestamp="1618175912583">
+    <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1620693366415" />
+    <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1624709420919" />
+    <state x="898" y="273" key="CommitChangelistDialog2" timestamp="1622672704879">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1699" y="463" key="FileChooserDialogImpl/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617916516314" />
-    <state x="1699" y="463" key="FileChooserDialogImpl/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618175912583" />
+    <state x="898" y="273" key="CommitChangelistDialog2/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622672704879" />
+    <state x="1699" y="463" key="FileChooserDialogImpl" timestamp="1621981641091">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1699" y="463" key="FileChooserDialogImpl/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1621981641091" />
+    <state x="1350" y="278" key="FileChooserDialogImpl/-1366.664.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1620253892558" />
+    <state x="720" y="146" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1620403421169" />
+    <state x="1699" y="463" key="FileChooserDialogImpl/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1620519794930" />
     <state x="1696" y="431" key="NewPhpClassDialog" timestamp="1618095372211">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1696" y="431" key="NewPhpClassDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618095372211" />
-    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1617054171604">
+    <state x="1114" y="628" key="NewPhpFileDialog" timestamp="1622064982994">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
+    <state x="1114" y="628" key="NewPhpFileDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622064982994" />
     <state x="1114" y="628" key="NewPhpFileDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617054171604" />
     <state x="781" y="350" key="SettingsEditor" timestamp="1617058230811">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="781" y="350" key="SettingsEditor/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617058230811" />
-    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1618161330445">
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1622672719000">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617316498127" />
-    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618161330445" />
-    <state x="1130" y="192" width="1082" height="783" key="find.popup" timestamp="1618092072071">
+    <state x="872" y="438" key="Vcs.Push.Dialog.v2/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622672719000" />
+    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1622499814497">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1130" y="192" width="1082" height="783" key="find.popup/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617134228006" />
-    <state x="1130" y="192" width="1082" height="783" key="find.popup/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618092072071" />
-    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1617478523617">
+    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622499814497" />
+    <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618703160578" />
+    <state x="1130" y="192" width="1082" height="783" key="find.popup" timestamp="1624394871511">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617230159017" />
-    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617478523617" />
+    <state x="1130" y="192" width="1082" height="783" key="find.popup/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1624394871511" />
+    <state x="1130" y="192" width="1082" height="783" key="find.popup/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1619309589779" />
+    <state x="1576" y="337" key="run.anything.popup" timestamp="1621204852719">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1576" y="337" key="run.anything.popup/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618350600551" />
+    <state x="1576" y="337" key="run.anything.popup/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1621204852719" />
+    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1619906270937">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618351552910" />
+    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1619906270937" />
   </component>
 </project>

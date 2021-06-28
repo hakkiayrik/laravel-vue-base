@@ -53,7 +53,8 @@
 		"select_avatar": "Avatar Seç",
 		"add_media": "Medya Ekle",
 		"upload_all": "Hepsini Yükle",
-		"remove_all": "Hepsini Sil"
+		"remove_all": "Hepsini Sil",
+		"upload_media": "Medya yükle"
 	},
 	"menus": {
 		"dashboard":  "Dashboard",
@@ -209,6 +210,7 @@
 			"media_list": "Medya Listesi",
 			"upload_media": "Media Yükle",
 			"upload_media_message": "Dosya yüklemek için sürekle bırak yaparak veya tıklayıp dosya seçebilirsiniz",
+			"uploading_media_message": "Dosya yükleniyor. Lütfen bekleyiniz...",
 			"max_upload_size_message": "En fazla {max_upload_size} boyutunda dosya yükleyebilirsiniz",
 			"max_upload_error_message": "En fazla {max_upload} dosya ekleyebilirsiniz",
 			"max_file_size_error_message": "{file_name} dosyasının boyutu çok büyük."
