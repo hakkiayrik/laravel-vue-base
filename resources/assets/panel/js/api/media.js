@@ -15,6 +15,10 @@ export function uploadMedia(data) {
 	})
 }
 
+export function uploadMediaWithProgress(requestData){
+	return request(requestData)
+}
+
 export function deleteMedia(id) {
 	return request({
 		url: `media/${id}`,

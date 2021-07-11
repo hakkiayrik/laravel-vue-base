@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ae6c90f-ddb7-40fc-8b24-c3c21fda9301" name="Default Changelist" comment="Düzenlemeler">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-vue-base.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-vue-base.iml" afterDir="false" />
+    <list default="true" id="8ae6c90f-ddb7-40fc-8b24-c3c21fda9301" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/FileUploadRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/FileUploadRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/api/media.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/api/media.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/lang/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/lang/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/layout/components/TagsView/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/layout/components/TagsView/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/views/media/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/views/media/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/tr/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/tr/panel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +211,15 @@
       <workItem from="1623188599624" duration="3875000" />
       <workItem from="1623526201307" duration="1187000" />
       <workItem from="1623927854075" duration="597000" />
-      <workItem from="1624194608560" duration="34162000" />
+      <workItem from="1624194608560" duration="35614000" />
+      <workItem from="1624871229609" duration="21000" />
+      <workItem from="1624875066266" duration="12000" />
+      <workItem from="1624950155353" duration="2013000" />
+      <workItem from="1624977945489" duration="601000" />
+      <workItem from="1625178791605" duration="572000" />
+      <workItem from="1625519979331" duration="6925000" />
+      <workItem from="1625777307282" duration="2180000" />
+      <workItem from="1625861628627" duration="16551000" />
     </task>
     <task id="LOCAL-00001" summary="role sayfasında düzenlemeler">
       <created>1618669107161</created>
@@ -232,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622672707670</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Media sayfası düzenleme işlemleri">
+      <created>1624862959856</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1624862959860</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +251,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="role sayfasında düzenlemeler" />
     <MESSAGE value="Düzenlemeler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Düzenlemeler" />
+    <MESSAGE value="Media sayfası düzenleme işlemleri" />
+    <option name="LAST_COMMIT_MESSAGE" value="Media sayfası düzenleme işlemleri" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1085" y="387" key="#com.intellij.ide.util.MemberChooser" timestamp="1618095717765">
@@ -253,16 +264,18 @@
     </state>
     <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1620693366415" />
     <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1624709420919" />
-    <state x="898" y="273" key="CommitChangelistDialog2" timestamp="1622672704879">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="479" y="0" key="CommitChangelistDialog2" timestamp="1624862954372">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state x="479" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1624862954372" />
     <state x="898" y="273" key="CommitChangelistDialog2/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622672704879" />
-    <state x="1699" y="463" key="FileChooserDialogImpl" timestamp="1621981641091">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="1699" y="457" key="FileChooserDialogImpl" timestamp="1625929708223">
+      <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state x="1699" y="463" key="FileChooserDialogImpl/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1621981641091" />
     <state x="1350" y="278" key="FileChooserDialogImpl/-1366.664.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1620253892558" />
     <state x="720" y="146" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1620403421169" />
+    <state x="1699" y="457" key="FileChooserDialogImpl/2560.0.1366.720/0.0.2560.1392@0.0.2560.1392" timestamp="1625929708223" />
     <state x="1699" y="463" key="FileChooserDialogImpl/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1620519794930" />
     <state x="1696" y="431" key="NewPhpClassDialog" timestamp="1618095372211">
       <screen x="0" y="0" width="2560" height="1410" />
@@ -272,24 +285,21 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1114" y="628" key="NewPhpFileDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622064982994" />
-    <state x="1114" y="628" key="NewPhpFileDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617054171604" />
-    <state x="781" y="350" key="SettingsEditor" timestamp="1617058230811">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="465" y="204" key="Vcs.Push.Dialog.v2" timestamp="1624863047143">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="781" y="350" key="SettingsEditor/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1617058230811" />
-    <state x="872" y="438" key="Vcs.Push.Dialog.v2" timestamp="1622672719000">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
+    <state x="465" y="204" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1624863047143" />
     <state x="872" y="438" key="Vcs.Push.Dialog.v2/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622672719000" />
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1622499814497">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622499814497" />
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1618703160578" />
-    <state x="1130" y="192" width="1082" height="783" key="find.popup" timestamp="1624394871511">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="1130" y="190" width="1082" height="774" key="find.popup" timestamp="1625929635068">
+      <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state x="1130" y="192" width="1082" height="783" key="find.popup/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1624394871511" />
+    <state x="1130" y="190" width="1082" height="774" key="find.popup/2560.0.1366.720/0.0.2560.1392@0.0.2560.1392" timestamp="1625929635068" />
     <state x="1130" y="192" width="1082" height="783" key="find.popup/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1619309589779" />
     <state x="1576" y="337" key="run.anything.popup" timestamp="1621204852719">
       <screen x="0" y="0" width="2560" height="1410" />

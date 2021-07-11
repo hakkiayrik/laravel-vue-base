@@ -209,7 +209,7 @@
 			"title": "Medya Yönetimi",
 			"media_list": "Medya Listesi",
 			"upload_media": "Media Yükle",
-			"upload_media_message": "Dosya yüklemek için sürekle bırak yaparak veya tıklayıp dosya seçebilirsiniz",
+			"upload_media_message": "Dosya yüklemek için sürekle bırak yapabilir veya tıklayıp dosya seçebilirsiniz",
 			"uploading_media_message": "Dosya yükleniyor. Lütfen bekleyiniz...",
 			"max_upload_size_message": "En fazla {max_upload_size} boyutunda dosya yükleyebilirsiniz",
 			"max_upload_error_message": "En fazla {max_upload} dosya ekleyebilirsiniz",

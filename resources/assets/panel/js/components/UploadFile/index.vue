@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { uploadMedia } from '../../api/media.js'
+import { uploadMediaWithProgress } from '../../api/media.js'
 
 export default {
 	name: "UploadFile",
@@ -123,15 +123,8 @@ export default {
 		uploadItem(index) {
 			this.loading = true
 			this.uploadLoading = true
-			const formData = new FormData()
 			
-			formData.append('files', this.uploadFiles[index]);
-			console.log(this.files);
-			uploadMedia(formData).then(response => {
-				this.loading = false
-				this.uploadLoading = false
-				this.uploadFileData = null
-			}).catch(err=>{ this.loading = false })
+			this.uploadFile(this.uploadFiles[index])
 		},
 		removeItem(index) {
 			this.uploadFiles.splice(index, 1)
@@ -141,18 +134,30 @@ export default {
 			this.uploadLoading = true
 			const formData = new FormData()
 			
-			let uploadData = this.uploadFiles.map(file => {
-				formData.append('files[]', file);
+			let uploadData = this.uploadFiles.map((file, index) => {
+				this.uploadFile(this.uploadFiles[index])
 			})
+		},
+		removeItems() {
+			this.uploadFiles = []
+		},
+		uploadFile(file, index) {
+			const formData = new FormData()
+			formData.append('files', file);
 			
-			uploadMedia(formData).then(response => {
+			uploadMediaWithProgress({
+				url: `media`,
+				method: 'post',
+				data: formData,
+				onUploadProgress: function( progressEvent ) {
+					this.uploadFiles[index].uploadPercentage = parseInt( Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 ))
+					console.log(this.uploadFiles[index]);
+				}.bind(this)
+			}).then(response => {
 				this.loading = false
 				this.uploadLoading = false
 				this.uploadFileData = null
 			}).catch(err=>{ this.loading = false })
-		},
-		removeItems() {
-			this.uploadFiles = []
 		}
 	}
 }
