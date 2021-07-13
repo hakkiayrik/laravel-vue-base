@@ -88,11 +88,11 @@ export default {
 		return {
 			loading: false,
 			dragover: false,
-			uploadLoading: false,
 			uploadFileData: null,
+			uploadLoading: false,
+			uploadProgress: [],
 			uploadFiles: [],
-			uploadMessage: [],
-			isSuccess: [],
+			uploadMessage: []
 		};
 	},
 	methods: {
@@ -122,7 +122,6 @@ export default {
 		},
 		uploadItem(index) {
 			this.loading = true
-			this.uploadLoading = true
 			
 			this.uploadFile(this.uploadFiles[index])
 		},
@@ -131,7 +130,6 @@ export default {
 		},
 		uploadItems() {
 			this.loading = true
-			this.uploadLoading = true
 			const formData = new FormData()
 			
 			let uploadData = this.uploadFiles.map((file, index) => {
@@ -142,6 +140,7 @@ export default {
 			this.uploadFiles = []
 		},
 		uploadFile(file, index) {
+			const indexKey = index;
 			const formData = new FormData()
 			formData.append('files', file);
 			
@@ -150,8 +149,8 @@ export default {
 				method: 'post',
 				data: formData,
 				onUploadProgress: function( progressEvent ) {
-					this.uploadFiles[index].uploadPercentage = parseInt( Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 ))
-					console.log(this.uploadFiles[index]);
+					this.uploadProgress[indexKey] = parseInt( Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 ))
+					console.log(index);
 				}.bind(this)
 			}).then(response => {
 				this.loading = false
