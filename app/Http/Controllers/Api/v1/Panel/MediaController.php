@@ -35,7 +35,7 @@ class MediaController extends Controller
     {
 		$image = $request->file("files");
 		$path = config('variables.path.media');
-		try {
+		/*try {
 			$extension = $image->extension();
 			$fileName = create_file_name($path, $extension);
 			$image->storeAs($path, $fileName);
@@ -50,7 +50,7 @@ class MediaController extends Controller
 			$uploadRequest['error'] = $image->name . __('panel.file_uploaded') . "(" . $e->getMessage() . ")";
 		}
 
-		return $this->success($uploadRequest);
+		return $this->success($uploadRequest);*/
 	}
 
     /**

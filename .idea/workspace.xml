@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8ae6c90f-ddb7-40fc-8b24-c3c21fda9301" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,15 +160,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\views\admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\mixins" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\app" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\lang" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\lang\en" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\views\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -215,7 +216,8 @@
       <workItem from="1625178791605" duration="572000" />
       <workItem from="1625519979331" duration="6925000" />
       <workItem from="1625777307282" duration="2180000" />
-      <workItem from="1625861628627" duration="19191000" />
+      <workItem from="1625861628627" duration="20614000" />
+      <workItem from="1627234642685" duration="6104000" />
     </task>
     <task id="LOCAL-00001" summary="role sayfasında düzenlemeler">
       <created>1618669107161</created>
@@ -245,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626043110743</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Media sayfası düzenleme işlemleri">
+      <created>1626210839738</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626210839738</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,11 +276,11 @@
     </state>
     <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1620693366415" />
     <state x="1010" y="460" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1624709420919" />
-    <state x="898" y="0" key="CommitChangelistDialog2" timestamp="1626043108787">
+    <state x="898" y="0" key="CommitChangelistDialog2" timestamp="1626210837214">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state x="479" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1624862954372" />
-    <state x="898" y="0" key="CommitChangelistDialog2/2560.0.1366.720/0.0.2560.1392@0.0.2560.1392" timestamp="1626043108787" />
+    <state x="898" y="0" key="CommitChangelistDialog2/2560.0.1366.720/0.0.2560.1392@0.0.2560.1392" timestamp="1626210837214" />
     <state x="898" y="273" key="CommitChangelistDialog2/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622672704879" />
     <state x="1699" y="457" key="FileChooserDialogImpl" timestamp="1625929708223">
       <screen x="0" y="0" width="2560" height="1392" />
@@ -289,11 +298,11 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1114" y="628" key="NewPhpFileDialog/-1366.661.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622064982994" />
-    <state x="871" y="385" key="Vcs.Push.Dialog.v2" timestamp="1626043129802">
+    <state x="871" y="385" key="Vcs.Push.Dialog.v2" timestamp="1626210843443">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state x="465" y="204" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1624863047143" />
-    <state x="871" y="385" key="Vcs.Push.Dialog.v2/2560.0.1366.720/0.0.2560.1392@0.0.2560.1392" timestamp="1626043129802" />
+    <state x="871" y="385" key="Vcs.Push.Dialog.v2/2560.0.1366.720/0.0.2560.1392@0.0.2560.1392" timestamp="1626210843443" />
     <state x="872" y="438" key="Vcs.Push.Dialog.v2/2560.0.1366.738/0.0.2560.1410@0.0.2560.1410" timestamp="1622672719000" />
     <state x="92" y="92" width="2376" height="1226" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1622499814497">
       <screen x="0" y="0" width="2560" height="1410" />

@@ -41,17 +41,17 @@
 								<span class="ml-3 text--secondary">{{ item.size }} bytes</span>
 							</v-list-item-title>
 						</v-list-item-content>
-						<v-list-item-action v-if="!loading">
+						<v-list-item-action v-if="!uploadFiles[index].imageLoading">
 							<v-btn icon color="primary" @click="uploadItem(index)">
 								<v-icon>file_upload</v-icon>
 							</v-btn>
 						</v-list-item-action>
-						<v-list-item-action v-if="!loading">
+						<v-list-item-action v-if="!uploadFiles[index].imageLoading">
 							<v-btn icon color="error" @click="removeItem(index)">
 								<v-icon>cancel</v-icon>
 							</v-btn>
 						</v-list-item-action>
-						<v-list-item-action v-if="loading">
+						<v-list-item-action v-if="uploadFiles[index].imageLoading">
 							<v-progress-circular :value="80" indeterminate></v-progress-circular>
 						</v-list-item-action>
 					</v-list-item>
@@ -114,6 +114,7 @@ export default {
 						reader.onload = () => {
 							let fileData = element
 							fileData.imagePath = reader.result
+							fileData.imageLoading = false
 							this.uploadFiles.push(fileData)
 						}
 					}
@@ -122,7 +123,8 @@ export default {
 		},
 		uploadItem(index) {
 			this.loading = true
-			
+			this.uploadFiles[index].imageLoading = true;
+			console.log(this.uploadFiles);
 			this.uploadFile(this.uploadFiles[index])
 		},
 		removeItem(index) {
@@ -136,7 +138,7 @@ export default {
 				this.uploadFile(this.uploadFiles[index])
 			})
 		},
-		removeItems() {
+		removeItems() { 
 			this.uploadFiles = []
 		},
 		uploadFile(file, index) {
