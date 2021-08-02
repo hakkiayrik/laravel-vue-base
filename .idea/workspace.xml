@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8ae6c90f-ddb7-40fc-8b24-c3c21fda9301" name="Default Changelist" comment="Düzenlemeler">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-vue-base.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-vue-base.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/Panel/MediaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/api/media.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/api/media.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/components/UploadFile/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/lang/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/lang/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/layout/components/TagsView/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/layout/components/TagsView/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/panel/js/views/media/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/panel/js/views/media/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/tr/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/tr/panel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +169,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sinav" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -168,15 +178,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\views\admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Laravel\laraval-vue-base" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\mixins" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\app" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\lang" />
       <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\lang\en" />
-      <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Laravel\laravel-vue-base\resources\assets\panel\js\views\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -217,6 +227,15 @@
       <workItem from="1623526201307" duration="1187000" />
       <workItem from="1623927854075" duration="597000" />
       <workItem from="1624194608560" duration="34162000" />
+      <workItem from="1624864976233" duration="2165000" />
+      <workItem from="1624915053947" duration="1345000" />
+      <workItem from="1625125227396" duration="1000" />
+      <workItem from="1625582562624" duration="248000" />
+      <workItem from="1625727910806" duration="333000" />
+      <workItem from="1625811215370" duration="1567000" />
+      <workItem from="1627367054478" duration="1412000" />
+      <workItem from="1627909018615" duration="423000" />
+      <workItem from="1627927289494" duration="956000" />
     </task>
     <task id="LOCAL-00001" summary="role sayfasında düzenlemeler">
       <created>1618669107161</created>
@@ -237,6 +256,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="role sayfasında düzenlemeler" />
