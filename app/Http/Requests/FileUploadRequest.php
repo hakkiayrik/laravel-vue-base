@@ -23,8 +23,9 @@ class FileUploadRequest extends FormRequest
      */
     public function rules()
     {
+    	$appMaxFileUploadSize = env('App_FILE_UPLOAD_MAX_SIZE');
 		return [
-			'files' => 'required',
+			'files' => 'required|image|max:' . $appMaxFileUploadSize,
 		];
     }
 }

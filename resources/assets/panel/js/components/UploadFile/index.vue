@@ -41,17 +41,17 @@
 								<span class="ml-3 text--secondary">{{ item.size }} bytes</span>
 							</v-list-item-title>
 						</v-list-item-content>
-						<v-list-item-action v-if="!loading">
+						<v-list-item-action v-if="!uploadFiles[index].imageLoading">
 							<v-btn icon color="primary" @click="uploadItem(index)">
 								<v-icon>file_upload</v-icon>
 							</v-btn>
 						</v-list-item-action>
-						<v-list-item-action v-if="!loading">
+						<v-list-item-action v-if="!uploadFiles[index].imageLoading">
 							<v-btn icon color="error" @click="removeItem(index)">
 								<v-icon>cancel</v-icon>
 							</v-btn>
 						</v-list-item-action>
-						<v-list-item-action v-if="loading">
+						<v-list-item-action v-if="uploadFiles[index].imageLoading">
 							<v-progress-circular :value="80" indeterminate></v-progress-circular>
 						</v-list-item-action>
 					</v-list-item>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { uploadMedia } from '../../api/media.js'
+import { uploadMediaWithProgress } from '../../api/media.js'
 
 export default {
 	name: "UploadFile",
@@ -88,11 +88,11 @@ export default {
 		return {
 			loading: false,
 			dragover: false,
-			uploadLoading: false,
 			uploadFileData: null,
+			uploadLoading: false,
+			uploadProgress: [],
 			uploadFiles: [],
-			uploadMessage: [],
-			isSuccess: [],
+			uploadMessage: []
 		};
 	},
 	methods: {
@@ -114,6 +114,7 @@ export default {
 						reader.onload = () => {
 							let fileData = element
 							fileData.imagePath = reader.result
+							fileData.imageLoading = false
 							this.uploadFiles.push(fileData)
 						}
 					}
@@ -122,37 +123,42 @@ export default {
 		},
 		uploadItem(index) {
 			this.loading = true
-			this.uploadLoading = true
-			const formData = new FormData()
-			
-			formData.append('files', this.uploadFiles[index]);
-			console.log(this.files);
-			uploadMedia(formData).then(response => {
-				this.loading = false
-				this.uploadLoading = false
-				this.uploadFileData = null
-			}).catch(err=>{ this.loading = false })
+			this.uploadFiles[index].imageLoading = true;
+			console.log(this.uploadFiles);
+			this.uploadFile(this.uploadFiles[index])
 		},
 		removeItem(index) {
 			this.uploadFiles.splice(index, 1)
 		},
 		uploadItems() {
 			this.loading = true
-			this.uploadLoading = true
 			const formData = new FormData()
 			
-			let uploadData = this.uploadFiles.map(file => {
-				formData.append('files[]', file);
+			let uploadData = this.uploadFiles.map((file, index) => {
+				this.uploadFile(this.uploadFiles[index])
 			})
+		},
+		removeItems() { 
+			this.uploadFiles = []
+		},
+		uploadFile(file, index) {
+			const indexKey = index;
+			const formData = new FormData()
+			formData.append('files', file);
 			
-			uploadMedia(formData).then(response => {
+			uploadMediaWithProgress({
+				url: `media`,
+				method: 'post',
+				data: formData,
+				onUploadProgress: function( progressEvent ) {
+					this.uploadProgress[indexKey] = parseInt( Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 ))
+					console.log(index);
+				}.bind(this)
+			}).then(response => {
 				this.loading = false
 				this.uploadLoading = false
 				this.uploadFileData = null
 			}).catch(err=>{ this.loading = false })
-		},
-		removeItems() {
-			this.uploadFiles = []
 		}
 	}
 }

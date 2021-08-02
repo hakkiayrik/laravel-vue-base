@@ -33,47 +33,24 @@ class MediaController extends Controller
      */
     public function store(FileUploadRequest $request)
     {
-		$requestData = $request->all();
+		$image = $request->file("files");
+		$path = config('variables.path.media');
+		/*try {
+			$extension = $image->extension();
+			$fileName = create_file_name($path, $extension);
+			$image->storeAs($path, $fileName);
 
-    	if (is_array($requestData["files"]) && count($requestData["files"]) > 0) {
-			foreach ($requestData["files"] as $file) {
-				$image = $file;
-				$path = config('variables.path.media');
-				try {
-					$extension = $image->extension();
-					$fileName = create_file_name($path, $extension);
-					$image->storeAs($path, $fileName);
+			$imageData['url'] = $path . $fileName;
+			$imageData['name'] = $fileName;
+			$image = Image::create($imageData);
+			$uploadRequest[] = $image;
 
-					$imageData['url'] = $path . $fileName;
-					$imageData['name'] = $fileName;
-					$image = Image::create($imageData);
-
-					$uploadRequest['success'][] = $image->name . " - " . __('panel.file_uploaded');
-				} catch (\Exception $e) {
-					$uploadRequest['error'][] = $image->name . " - " . __('panel.file_uploaded') . "(" . $e->getMessage() . ")";
-				}
-
-			}
-		} else {
-			$image = $request->file("files");
-			$path = config('variables.path.media');
-			try {
-				$extension = $image->extension();
-				$fileName = create_file_name($path, $extension);
-				$image->storeAs($path, $fileName);
-
-				$imageData['url'] = $path . $fileName;
-				$imageData['name'] = $fileName;
-				$image = Image::create($imageData);
-				$uploadRequest[] = $image;
-
-				$uploadRequest['success'] = $image->name . __('panel.file_uploaded');
-			} catch (\Exception $e) {
-				$uploadRequest['error'] = $image->name . __('panel.file_uploaded') . "(" . $e->getMessage() . ")";
-			}
+			$uploadRequest['success'] = $image->name . __('panel.file_uploaded');
+		} catch (\Exception $e) {
+			$uploadRequest['error'] = $image->name . __('panel.file_uploaded') . "(" . $e->getMessage() . ")";
 		}
 
-		return $this->success($uploadRequest);
+		return $this->success($uploadRequest);*/
 	}
 
     /**
