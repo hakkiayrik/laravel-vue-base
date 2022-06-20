@@ -37,3 +37,11 @@ export function deleteCategory(id) {
 		method: 'delete'
 	})
 }
+
+export function updateDisplayOrder(data) {
+    return request({
+        url: 'category/update/sort',
+        method: 'post',
+        data
+    })
+}

@@ -27,7 +27,7 @@ class CategoryRequest extends FormRequest
         return [
 			$defaultLanguage . '.name' => 'required|max:25|min:2',
 			$defaultLanguage . '.slug' => 'required|max:50|min:3|unique:categories',
-			'order_by' => 'required|email|unique:admins',
+			'display_order' => 'required|email|unique:admins',
         ];
     }
 }

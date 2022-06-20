@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
 		//Create Fake Users
 		User::factory()->count(10)->create()->each(function ($user) {
 			//create user log

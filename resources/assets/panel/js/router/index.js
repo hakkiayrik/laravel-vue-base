@@ -10,8 +10,10 @@ import userRoutes from './modules/user'
 import roleRoutes from './modules/role'
 import categoryRoutes from './modules/category'
 import logRoutes from './modules/log'
+import languageRoutes from './modules/language'
 import postRoutes from './modules/post'
 import mediaRoutes from './modules/media'
+import attributeGroups from "./modules/attribute-group";
 
 
 Vue.use(Router)
@@ -118,6 +120,8 @@ export const asyncRoutes = [
 	adminRoutes,
 	roleRoutes,
 	logRoutes,
+	languageRoutes,
+    attributeGroups,
 	{ path: '*', redirect: '/404', hidden: true }
 ]
 

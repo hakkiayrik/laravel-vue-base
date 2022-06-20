@@ -27,7 +27,20 @@
 		"select_image": "Resim Seç",
 		"add_youtube_video_url": "Youtube Video Url",
 		"meta_keywords":  "Meta Anahtarları",
-		"meta_description":  "Meta Açıklaması"
+		"meta_description":  "Meta Açıklaması",
+        "translations": "Çeviriler",
+        "type": "Tip",
+        "published_date": "Yayınlanma Tarihi",
+        "visibility": "Görünürlük",
+        "like_dislike": "Beğen / Beğenme ",
+        "like": "Beğen",
+        "dislike": "Beğenme",
+        "author": "Yazar",
+        "publish_status": "Yayınlanma Durumu",
+        "group_name": "Grup Adı",
+        "attribute_name": "Özellik Adı",
+        "attribute_type": "Özellik Tipi",
+        "option_name": "Opsiyon Adı"
 	},
 	"buttons": {
 		"yes": "Evet",
@@ -54,7 +67,9 @@
 		"add_media": "Medya Ekle",
 		"upload_all": "Hepsini Yükle",
 		"remove_all": "Hepsini Sil",
-		"upload_media": "Medya yükle"
+		"upload_media": "Medya yükle",
+        "select_file": "Dosya Seç",
+        "preview": "Önizleme"
 	},
 	"menus": {
 		"dashboard":  "Dashboard",
@@ -100,12 +115,23 @@
 		"logs": {
 			"title": "Sistem Kayıtları",
 			"index": "Kayıt Listesi"
-		}
+		},
+        "languages": {
+            "title": "Dil Paneli",
+            "index": "Dil Listesi"
+        },
+        "attribute_groups": {
+            "title": "Özellik Grupları Paneli",
+            "index": "Özellik Grupları"
+        }
 	},
 	"pages": {
 		"dashboard": {
 			"title": "Dashboard"
 		},
+        "languages": {
+            "title": "Dil Yönetimi"
+        },
 		"logs": {
 			"title": "İşlem Listesi",
 			"user" : "Kullanıcı",
@@ -188,6 +214,26 @@
 			"delete": "Silme",
 			"select_role": "Role Seç"
 		},
+        "attribute_groups": {
+            "title": "Özellik Grupları Yönetimi",
+            "edit_role": "Grup Düzenle",
+            "attribute_group_name": "Grup Adı",
+            "add_attribute_group": "Grup Ekle",
+            "permissions": "İzinler",
+            "menu": "Menü",
+            "access": "Erişim",
+            "create": "Oluşturma",
+            "edit": "Düzenleme",
+            "delete": "Silme",
+            "select_role": "Grup Seç",
+            "all_attribute_list": "Özellik Listesi",
+            "assigned_attribute_list": "Atanan Özellik Listesi",
+            "add_attribute": "Özellik Ekle",
+            "edit_attribute": "Özellik Düzenle",
+            "assigned_attribute_not_found": "Bu sete tanımlı özellik bulunamadı!",
+            "attribute_not_found": "Sisteme tanımlı özellik bulunamadı!",
+            "empty_option_error_message": "Seçtiğiniz tipe ait opsiyonlar tanımlamalısınız"
+        },
 		"posts": {
 			"title": "Yazı Yönetimi",
 			"edit_post": "Yazı Düzenle",
@@ -203,13 +249,18 @@
 			"types": {
 				"article": "Makale",
 				"video": "Video Paylaşımı"
-			}
+			},
+            "visibilities": {
+                "public": "Herkese Açık",
+                "private": "Gizli"
+            }
 		},
 		"media": {
 			"title": "Medya Yönetimi",
 			"media_list": "Medya Listesi",
 			"upload_media": "Media Yükle",
-			"upload_media_message": "Dosya yüklemek için sürekle bırak yapabilir veya tıklayıp dosya seçebilirsiniz",
+            "not_found_media_message": "Media dosyası bulunamadı!",
+			"upload_media_message": "Yüklemek istediğiniz dosya/dosyalarınızı buraya sürekleyebilirsiniz",
 			"uploading_media_message": "Dosya yükleniyor. Lütfen bekleyiniz...",
 			"max_upload_size_message": "En fazla {max_upload_size} boyutunda dosya yükleyebilirsiniz",
 			"max_upload_error_message": "En fazla {max_upload} dosya ekleyebilirsiniz",
@@ -250,7 +301,16 @@
 		"video": "Video",
 		"image": "Resim",
 		"is_must": "Zorunlu",
-		"type": "Tip"
+		"type": "Tip",
+        "or": "Veya",
+        "sort": "Sırala",
+        "name": "İsim",
+        "yes": "Evet",
+        "no": "Hayır",
+        "lang_code": "Dil Kodu",
+        "is_rtl": "RTL",
+        "is_ltr": "LTR",
+        "options": "Opsiyonlar"
 	},
 	"components": {
 		"avatar_dialog" : {

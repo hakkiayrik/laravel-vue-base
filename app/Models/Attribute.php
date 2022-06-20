@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Attribute extends Model
 {
 	protected $fillable = [
-		'label', 'name', 'type', 'option'
+		'label', 'html_name', 'type', 'options', 'display_order'
 	];
+
+    public $timestamps = false;
 }

@@ -1,5 +1,5 @@
 <template>
-	<v-app class="grey lighten-3">
+	<v-app>
 		<avatar-dialog v-if="avatarsDialog" @dialog="handleDialog" :active="user.avatar" @select-avatar="handleAvatar"></avatar-dialog>
 		<v-container fluid>
 			<v-row>
@@ -45,24 +45,57 @@
 						<v-card-text>
 							<validation-observer ref="infoForm" v-slot="{ invalid, validated, passes, validate }">
 								<v-form @keyup.native.enter="passes(updateInfo)">
-									<validation-provider v-slot="{ errors, valid }" name="name" rules="required|max:100">
-										<v-text-field
-											outlined
-											v-model="user.name"
-											:error-messages="errors[0]"
-											:success="valid"
-											:label="$t('fields.first_name')"
-											prepend-inner-icon="perm_identity"
-											required
-											dense
-										></v-text-field>
-									</validation-provider>
+                                    <v-row>
+                                        <v-col>
+                                            <validation-provider v-slot="{ errors, valid }" name="first_name" rules="required|max:100">
+                                                <v-text-field
+                                                    outlined
+                                                    v-model="user.first_name"
+                                                    :error-messages="errors[0]"
+                                                    :success="valid"
+                                                    :label="$t('fields.first_name')"
+                                                    prepend-inner-icon="perm_identity"
+                                                    required
+                                                    dense
+                                                ></v-text-field>
+                                            </validation-provider>
+                                        </v-col>
+                                        <v-col>
+                                            <validation-provider v-slot="{ errors, valid }" name="last_name" rules="required|max:100">
+                                                <v-text-field
+                                                    outlined
+                                                    v-model="user.last_name"
+                                                    :error-messages="errors[0]"
+                                                    :success="valid"
+                                                    :label="$t('fields.last_name')"
+                                                    prepend-inner-icon="perm_identity"
+                                                    required
+                                                    dense
+                                                ></v-text-field>
+                                            </validation-provider>
+                                        </v-col>
+                                        <v-col>
+                                            <validation-provider v-slot="{ errors, valid }" name="email" rules="required|email">
+                                                <v-text-field
+                                                    outlined
+                                                    v-model="user.email"
+                                                    :error-messages="errors[0]"
+                                                    :success="valid"
+                                                    :label="$t('fields.email')"
+                                                    prepend-inner-icon="email"
+                                                    required
+                                                    dense
+                                                ></v-text-field>
+                                            </validation-provider>
+                                        </v-col>
+                                    </v-row>
+
 									<v-btn color="primary"  @click="updateInfo" :loading="loadingInfo">{{$t("buttons.save")}}</v-btn>
 								</v-form>
 							</validation-observer>
 						</v-card-text>
 					</v-card>
-					
+
 					<v-card class="mt-5" flat rounded="0">
 						<v-card-title>
 							{{$t("pages.profile.reset_password")}}
@@ -150,7 +183,7 @@ export default {
 					}
 					this.loadingInfo = false
 				})
-			
+
 		},
 		updatePassword() {
 			this.loadingPassword = true;

@@ -11,7 +11,7 @@
 								{{ error.message }}
 							</v-alert>
 							<v-form @keyup.native.enter="passes(handleLogin)">
-								<validation-provider v-slot="{ errors, valid }" name="username" rules="required|max:25">
+								<validation-provider v-slot="{ errors, valid }" immediate name="username" rules="required|max:25">
 									<v-text-field
 										v-model="loginForm.username"
 										:counter="25"
@@ -22,7 +22,7 @@
 										required
 									></v-text-field>
 								</validation-provider>
-								<validation-provider v-slot="{ errors,valid }" name="password" rules="required">
+								<validation-provider v-slot="{ errors,valid }" immediate name="password" rules="required">
 									<v-text-field
 										v-model="loginForm.password"
 										:error-messages="errors[0]"
@@ -44,7 +44,7 @@
 										<router-link :to="{name: 'forgot-password'}">{{$t('global.forgot_password')}}</router-link>
 									</v-col>
 								</v-row>
-								
+
 								<v-btn class="mr-4" color="primary" :disabled="invalid || !validated" :loading="loading"
 								       @click="passes(handleLogin)">
 									{{ $t('buttons.login') }}
@@ -59,7 +59,7 @@
 				</v-row>
 			</v-container>
 		</v-main>
-	
+
 	</v-app>
 </template>
 

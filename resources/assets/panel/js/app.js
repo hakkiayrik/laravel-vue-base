@@ -14,6 +14,7 @@ import VueConfirmDialog from 'vue-confirm-dialog'
 import * as filters from './filters'
 
 Vue.use(VueConfirmDialog)
+
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 
 permission.install(Vue)

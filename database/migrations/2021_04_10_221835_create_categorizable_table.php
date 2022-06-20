@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategorizablesTable extends Migration
+class CreateCategorizableTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateCategorizablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorizables', function (Blueprint $table) {
+        Schema::create('categorizable', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id');
             $table->morphs('categorizable');
             $table->timestamps();
         });
 
-		Schema::table('categorizables', function ($table) {
-			$table->unique(['category_id', 'categorizable_id', 'categorizable_type'], 'categorizables_ids_type_unique');
+		Schema::table('categorizable', function ($table) {
+			$table->unique(['category_id', 'categorizable_id', 'categorizable_type'], 'categorizable_ids_type_unique');
 			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
 		});
     }

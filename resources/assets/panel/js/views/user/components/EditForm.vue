@@ -56,7 +56,7 @@
 							</v-card-actions>
 						</v-card>
 					</v-dialog>
-					
+
 					<v-card flat rounded="0" elevation="1">
 						<v-tabs dark background-color="#42b983" show-arrows v-model="selectedTab">
 							<v-tabs-slider color="teal lighten-3"></v-tabs-slider>
@@ -69,7 +69,7 @@
 								{{ $t('global.settings') }}
 							</v-tab>
 						</v-tabs>
-						
+
 						<v-tabs-items v-model="selectedTab">
 							<v-tab-item value="tab-activity">
 								<v-card flat>
@@ -131,7 +131,7 @@
 										</v-card>
 										<v-card flat>
 											<v-card-text>
-												<v-btn color="primary" block @click="formSubmit" :loading="loadingForm">{{ $t("buttons.save") }}</v-btn>
+												<v-btn color="primary" @click="formSubmit" :loading="loadingForm">{{ $t("buttons.save") }}</v-btn>
 											</v-card-text>
 										</v-card>
 									</v-form>
@@ -150,7 +150,7 @@ import { getUser, getUserLogs, updateUser } from "../../../api/user";
 export default {
 	name: 'From',
 	props: ['isEdit'],
-	
+
 	data() {
 		return {
 			selectedTab: 'tab-activity',
@@ -182,7 +182,7 @@ export default {
 			getUser(id).then(response => {
 				this.loading = false;
 				this.user = response.data;
-				
+
 				this.getUserLogs(id)
 			}).catch(err => { this.loading = false })
 		},
@@ -200,7 +200,7 @@ export default {
 					this.$router.push({name: 'user.index'})
 				}).catch(err => {
 					this.loading = false
-					
+
 					if(err.response.status === 400) {
 						this.$refs.form.setErrors(err.response.data.data)
 					}
@@ -210,10 +210,10 @@ export default {
 		openLogDetailDialog(payload) {
 			this.logDetailDialogData.title = payload.message
 			this.logDetailDialogData.message = payload.data
-			
+
 			this.logDetailDialog = true;
 		},
-		
+
 		jsonParser(jsonData) {
 			return JSON.parse(jsonData)
 		}
@@ -225,5 +225,5 @@ export default {
 	.v-input--selection-controls{
 		margin-top: 0!important;
 	}
-	
+
 </style>

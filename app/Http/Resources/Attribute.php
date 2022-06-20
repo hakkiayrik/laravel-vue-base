@@ -17,10 +17,10 @@ class Attribute extends JsonResource
 		return [
 			'id' => $this->id,
 			'label' => $this->label,
-			'name' => $this->name,
+			'html_name' => $this->name,
 			'type' => $this->type,
-			'option' => $this->option,
-			'values' => AttributeValue::collection($this->values)
+            'display_order' => $this->display_order,
+			'options' => $this->options,
 		];
     }
 }

@@ -22,15 +22,15 @@ class CategoryController extends Controller
 	 */
     public function index(DataTableRequest $request)
     {
+        $page = $request->input('page', 1);
 		$sortBy = $request->input('sortBy', []);
 		$sortDesc = $request->input('sortDesc', []);
-		$itemPerPage = $request->input('itemPerPage');
+        $itemsPerPage = $request->input('itemsPerPage');
 		$search = $request->input('search');
 		$categories = Category::query();
 
 		if(strlen($search) > 0) {
-			$categories->where('name', 'LIKE', "%$search%")
-				->orWhere('description', 'LIKE', "%$search%");
+			$categories->whereTranslationLike("name", "%$search%");
 		}
 
 		if(count($sortBy) > 0) {
@@ -39,7 +39,7 @@ class CategoryController extends Controller
 			}
 		}
 
-		$categories = $categories->latest()->paginate($itemPerPage);
+		$categories = $categories->latest()->paginate($itemsPerPage, ['*'], 'page', $page);
 
 		return $this->success(new CategoryCollection($categories));
     }
@@ -94,5 +94,23 @@ class CategoryController extends Controller
         $category->delete();
 
 		return $this->success('', __('panel.transaction_success'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateDisplayOrder(Request $request)
+    {
+
+        $items = $request->get('items');
+        if (count($items)) {
+            foreach ($items as $index => $item) {
+                Category::find($item)->update(['display_order' => $index]);
+            }
+            return $this->success([], __('panel.transaction_success'));
+        }
+
+        return $this->sendError('', [], 400);
     }
 }

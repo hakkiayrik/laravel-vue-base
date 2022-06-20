@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
 		Schema::create('posts', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->unsignedInteger('user_id');
+			$table->unsignedInteger('admin_id');
 			$table->dateTime("published_date");
 			$table->enum("type", ["article", "video"]);
 			$table->bigInteger("like")->default(0);

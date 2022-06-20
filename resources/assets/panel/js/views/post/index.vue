@@ -25,6 +25,7 @@
 									hide-details
 									single-line
 									class="mr-2"
+                                    @change="initialize"
 								></v-text-field>
 								<v-btn color="primary" dark class="justify-content-between" :to="{name: 'post.create'}" v-permission="['create-post']">
 									<v-icon small>add</v-icon>
@@ -32,10 +33,38 @@
 								</v-btn>
 							</v-toolbar>
 						</template>
-						<template v-slot:item.actions="{ item }">
-							<v-btn icon class="mr-2" small color="primary" dark v-permission="['edit-post']"> <v-icon small>edit</v-icon> </v-btn>
-							<v-btn icon small color="error" dark v-permission="['delete-post']" @click="deleteItem(item)"> <v-icon small>delete</v-icon> </v-btn>
-						</template>
+                        <template v-slot:item="{ item }">
+                            <tr :key="item.id">
+                                <td>{{ item.id }}</td>
+                                <td>{{ item[defaultLangCode].title }}</td>
+                                <td>{{ item[defaultLangCode].slug }}</td>
+                                <td>{{ $t("pages.posts.types."+item.type) }}</td>
+                                <td>{{ $t("pages.posts.visibilities."+item.visibility) }}</td>
+                                <td>
+                                    <v-chip class="mr-2" small color="success" label>
+                                        <v-icon x-small class="mr-2">thumb_up</v-icon> {{ item.like }}</v-chip>
+                                    <v-chip class="mr-2" small color="error" label>
+                                        <v-icon x-small class="mr-2">thumb_down</v-icon> {{ item.dislike }}
+                                    </v-chip>
+                                </td>
+                                <td>{{ item.published_date }}</td>
+                                <td>{{ item.created_at_string }}</td>
+                                <td class="text-center">
+                                    <v-switch
+                                        v-model="item.status"
+                                        color="success"
+                                        class="d-inline-block ma-0"
+                                        hide-details
+                                        dense
+                                        @change="handleStatus(item)"
+                                    ></v-switch>
+                                </td>
+                                <td>
+                                    <v-btn icon class="mr-2" small color="primary" dark :to="{ name:'post.edit', params:{id: item.id} }" v-permission="['edit-post']"> <v-icon small>edit</v-icon> </v-btn>
+                                    <v-btn icon small color="error" dark v-permission="['delete-post']" @click="deleteItem(item)"> <v-icon small>delete</v-icon> </v-btn>
+                                </td>
+                            </tr>
+                        </template>
 						<template v-slot:no-data>
 							<v-btn color="primary" @click="initialize">Reset</v-btn>
 						</template>
@@ -53,6 +82,7 @@ export default {
 	name: "index",
 	data() {
 		return {
+            defaultLangCode : process.env.MIX_DEFAULT_LANGUAGE,
 			loading: false,
 			options: {},
 			search: "",
@@ -64,47 +94,52 @@ export default {
 		headers() {
 			return  [
 				{
-					text: this.$i18n.t('fields.order_by'),
-					align: 'left',
-					value: 'order_by',
-					width: "5%",
-				},
-				{
 					text: this.$i18n.t('fields.id'),
 					align: 'left',
 					value: 'id',
 					width:'5%'
-					
+
 				},
 				{
-					text: this.$i18n.t('fields.name'),
-					align: 'center',
-					value: 'name'
+					text: this.$i18n.t('fields.title'),
+					value: 'title'
 				},
 				{
 					text: this.$i18n.t('fields.slug'),
-					align: 'center',
 					value: 'slug'
 				},
 				{
-					text: this.$i18n.t('fields.description'),
-					align: 'center',
-					value: 'description'
+					text: this.$i18n.t('fields.type'),
+					value: 'type'
 				},
 				{
-					text: this.$i18n.t('fields.created_at'),
-					align: 'center',
-					value: 'created_at'
-				},
+					text: this.$i18n.t('fields.visibility'),
+					value: 'visibility'
+				},{
+                    text: this.$i18n.t('fields.like_dislike'),
+                },
+
+                {
+                    text: this.$i18n.t('fields.published_date'),
+                    value: 'published_date'
+                },
+                {
+                    text: this.$i18n.t('fields.created_at'),
+                    value: 'created_at'
+                },
+                {
+                    text: this.$i18n.t('fields.publish_status'),
+                    value: 'status',
+                    align: 'center'
+                },
 				{
 					text: this.$i18n.t('global.actions'),
-					align: 'center',
 					value: 'actions',
 					width: "5%",
 					sortable: false
 				},
 			]
-			
+
 		}
 	},
 	watch: {
@@ -113,9 +148,6 @@ export default {
 				this.initialize()
 			},
 			deep: true,
-		},
-		search() {
-			this.initialize();
 		}
 	},
 	methods: {
@@ -145,6 +177,9 @@ export default {
 				}
 			})
 		},
+        handleStatus() {
+
+        }
 	},
 }
 </script>

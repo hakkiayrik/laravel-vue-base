@@ -1,22 +1,30 @@
 <template>
 	<v-app>
+        <v-dialog v-model="previewDialog" fullscreen hide-overlay transition="dialog-bottom-transition" v-if="post[tab.split('-')[1]]">
+            <v-card>
+                <v-toolbar dark color="primary" tile>
+                    <v-btn icon dark @click="previewDialog = false">
+                        <v-icon>clear</v-icon>
+                    </v-btn>
+                    <v-toolbar-title>{{ $t('buttons.preview') }}</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                </v-toolbar>
+                <h2 class="text-center">{{ post[tab.split("-")[1]].title}}</h2>
+                <v-card-text v-html="post[tab.split('-')[1]].content"></v-card-text>
+            </v-card>
+        </v-dialog>
 		<v-container fluid>
-			<media-dialog v-if="mediaDialog" @dialog="handleMediaDialog" @media="handleMedia" />
+			<media-dialog v-if="mediaDialog" @dialog="handleMediaDialog" @selected-media="handleMedia"/>
 			<validation-observer ref="form" v-slot="{ invalid, validated, passes, validate }">
-				<v-form @keyup.native.enter="passes(formSubmit)">
+				<v-form>
 					<v-row>
 						<v-col sm="12" md="7" lg="8" xl="10">
 							<v-tabs v-model="tab" show-arrows center-active hide-slider class="outline-tabs-wrapper" background-color="transparent" active-class="active-tab" height="30" right>
-								<v-btn small tile elevation="0" color="blue-grey" left class="text-capitalize white--text" @click="mediaDialog = true">
-									<v-icon small class="mr-1">add_photo_alternate</v-icon>
-									{{ $t("buttons.add_media") }}
-								</v-btn>
-								<v-spacer></v-spacer>
 								<v-tab v-for="lang in languages" :href="`#tab-${lang.lang_code}`" :key="lang.lang_code" outlined="true" class="outline-tab" :class=" $vuetify.theme.dark ? 'tab-dark' : 'tab-light'" :ripple="false">
 									{{ lang.name }} <small class="ml-1 red--text" v-if="defaultLangCode === lang.lang_code">({{ $t("global.is_must")  }})</small>
 								</v-tab>
 							</v-tabs>
-							
+
 							<v-tabs-items v-model="tab" fixed-tabs>
 								<v-tab-item v-for="lang in languages" :value="`tab-${lang.lang_code}`" :key="lang.lang_code" class="outline-tab-item" reverse-transition>
 									<v-card outlined class="pa-3 rounded-0 border-top-0">
@@ -74,7 +82,17 @@
 													dense
 												></v-textarea>
 											</validation-provider>
-											<vue-editor v-model="post[lang.lang_code].content" />
+                                            <v-btn small tile elevation="0" color="blue-grey" left class="text-capitalize white--text" @click="openModal">
+                                                <v-icon small class="mr-1">add_photo_alternate</v-icon>
+                                                {{ $t("buttons.add_media") }}
+                                            </v-btn>
+											<vue-editor
+                                                ref="editor"
+                                                v-model="post[lang.lang_code].content"
+                                                :editor-toolbar="customToolbar"
+                                                :editor-options="editorSettings"
+                                                :custom-modules="customModulesForEditor"
+                                                @focus="onFocus"/>
 										</v-container>
 									</v-card>
 								</v-tab-item>
@@ -90,7 +108,7 @@
 											<v-subheader class="pa-0 fill-height">{{ $t("fields.select_category") }}</v-subheader>
 										</v-col>
 										<v-col md="12" class="py-sm-0">
-											<validation-provider name="category" rules="required" immediate v-slot="{ errors, valid }">
+											<validation-provider name="categories" rules="required" immediate v-slot="{ errors, valid }">
 												<v-select v-model="post.categories" :items="categories" item-text="name" item-value="id" :label="$t('fields.category')" :success="valid" :error-messages="errors[0]" required dense multiple outlined>
 													<template v-slot:selection="{ item, index }">
 														<v-chip
@@ -110,7 +128,7 @@
 									</v-row>
 								</v-card-text>
 							</v-card>
-							
+
 							<v-card outlined class="rounded-0 mt-5">
 								<v-card-title class="subtitle-2 py-2">{{ $t("global.general") }}</v-card-title>
 								<v-divider></v-divider>
@@ -136,7 +154,7 @@
 											></v-select>
 										</v-col>
 									</v-row>
-									
+
 									<v-row class="my-0 mb-2">
 										<v-col xs="12" sm="4" class="py-sm-1">
 											<v-subheader class="pa-0 fill-height">
@@ -158,7 +176,7 @@
 											></v-select>
 										</v-col>
 									</v-row>
-									
+
 									<v-row class="my-0 mb-2">
 										<v-col xs="12" sm="4" class="py-sm-1">
 											<v-subheader class="pa-0 fill-height">
@@ -218,14 +236,40 @@
 										</v-col>
 									</v-row>
 									<v-row>
-										<v-col cols="12">
-											<v-btn depressed color="primary"  :disabled="invalid || !validated" :loading="loading" @click="formSubmit" right>
+										<v-col>
+											<v-btn depressed color="primary"  :disabled="invalid || !validated" :loading="saveLoading" @click="formSubmit" right>
 												{{ $t("buttons.save") }}
 											</v-btn>
 										</v-col>
+                                        <v-col class="text-right" v-if="post[tab.split('-')[1]]">
+                                            <v-btn depressed link text color="primary"  :disabled="invalid || !validated" :loading="saveLoading" @click="previewDialog = true" right>
+                                                {{ $t("buttons.preview") }}
+                                            </v-btn>
+                                        </v-col>
 									</v-row>
 								</v-card-text>
 							</v-card>
+
+                            <v-card outlined class="rounded-0 mt-5" v-if="post.author.id">
+                                <v-card-title class="subtitle-2 py-2">{{ $t("fields.author") }}</v-card-title>
+                                <v-divider></v-divider>
+                                <v-card-text>
+                                    <v-list-item class="grow">
+                                        <v-list-item-avatar color="grey darken-3">
+                                            <v-img class="elevation-6" alt="" :src="post.author.avatar.image_path"
+                                            ></v-img>
+                                        </v-list-item-avatar>
+
+                                        <v-list-item-content>
+                                            <v-list-item-title> {{ post.author.first_name + " " + post.author.last_name }} </v-list-item-title>
+                                            <v-list-item-subtitle>{{ post.author.username }}</v-list-item-subtitle>
+                                        </v-list-item-content>
+                                        <v-list-item-action>
+                                            <v-list-item-action-text v-text="post.created_at_string"></v-list-item-action-text>
+                                        </v-list-item-action>
+                                    </v-list-item>
+                                </v-card-text>
+                            </v-card>
 						</v-col>
 					</v-row>
 				</v-form>
@@ -235,11 +279,17 @@
 </template>
 
 <script>
+import Quill from 'quill'
+import { VueEditor } from "vue2-editor"
+import ImageResize from 'quill-image-resize-module'
 import MediaDialog from '../../../components/MediaDialog'
+import HelperMixin from '../../../mixins/helper'
 import { getCategories } from '../../../api/category'
 import { getPost, updatePost, createPost } from "../../../api/post"
-import { VueEditor } from "vue2-editor"
-import HelperMixin from '../../../mixins/helper'
+import {getLanguages} from "../../../api/language"
+import {uploadMediaWithProgress} from "../../../api/media"
+
+Quill.register('modules/imageResize', ImageResize)
 
 export default {
 	name: "PostForm",
@@ -251,17 +301,18 @@ export default {
 		}
 	},
 	components: { VueEditor, MediaDialog },
-	created() {
+	mounted() {
 		if(this.isEdit) {
 			const id= this.$route.params && this.$route.params.id
 			this.getPost(id)
 		} else {
-			this.loadLanguages()
+			this.getLanguages()
+            this.getCategories()
 		}
-		this.getCategories()
 	},
 	data() {
 		return {
+            saveLoading: false,
 			projectUrl: process.env.APP_URL,
 			defaultLangCode : process.env.MIX_DEFAULT_LANGUAGE,
 			publishedDatePicker: false,
@@ -278,77 +329,145 @@ export default {
 				{ text: this.$i18n.t("global.private"), value: "private"}
 			],
 			categories: [],
-			languages: [
-				{
-					id: 1,
-					lang_code: "en",
-					name: "English",
-					is_rtl: false,
-					active: true,
-				},
-				{
-					id: 1,
-					lang_code: "tr",
-					name: "Türkçe",
-					is_rtl: false,
-					active: true
-				}
-			],
+			languages: [],
 			tab: 'tab-' + process.env.MIX_DEFAULT_LANGUAGE,
 			post: {
 				image: "",
+                author: {},
 				video_url: "",
 				categories: [],
 				type: "article",
 				status: 1,
 				visibility: "public",
 				published_date: new Date().toISOString().substr(0, 10),
+                content: '',
 			},
-			mediaDialog: false
+			mediaDialog: false,
+            previewDialog: false,
+            formData: new FormData(),
+            customToolbar: [
+                [{ 'font': [] }],
+                [{ 'header': [false, 1, 2, 3, 4, 5, 6, ] }],
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{'align': ''}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
+                [{ 'header': 1 }, { 'header': 2 }],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],
+                [{ 'indent': '-1'}, { 'indent': '+1' }],
+                [{ 'color': [] }, { 'background': [] }],
+                ['link', 'video', 'formula'],
+                [{ 'direction': 'rtl' }],
+                ['clean'],
+            ],
+            editorSettings: {
+                modules: {
+                    imageResize: {}
+                }
+            },
+            customModulesForEditor: [
+                { alias: "imageResize", module: ImageResize }
+            ],
+            quill: null
 		}
 	},
 	methods: {
+	    getPost(id) {
+            getPost(id).then(response => {
+                this.loading = false
+                this.post = response.data;
+                this.getLanguages()
+                this.getCategories()
+            }).catch(err => { this.loading = false })
+        },
+        getCategories() {
+            let query = {page: 1, itemsPerPage: 250}
+            getCategories(query).then(response => {
+                this.loading = false
+                this.categories = response.data.data;
+
+            }).catch(err => { this.loading = false });
+        },
+        getLanguages() {
+            this.loading = true
+            getLanguages({page: 1, itemsPerPage: 250, active: true}).then(response => {
+                this.loading = false
+                this.languages = response.data.data
+                this.loadLanguages()
+            }).catch(err => {this.loading = false})
+        },
 		formSubmit(){
 			this.loading = true
-			let formData = new FormData()
-			
-			this.buildFormData(formData, this.post)
-			
-			createPost(formData).then(response => {
-				this.$router.push({name: 'post.index'})
-			}).catch(err => {
-				this.loading = false
-				
-				if(err.response.status === 400) {
-					this.$refs.form.setErrors(err.response.data.data)
-				}
-			})
-		},
-		getCategories() {
-			this.loading = false
-			let query = {page: 1, itemsPerPage: 250}
-			getCategories(query).then(response => {
-				this.loading = false
-				this.categories = response.data.data;
-				
-			}).catch(err => { this.loading = false });
+            let postData = this.post;
+			delete postData.author
+
+            this.buildFormData(this.formData, postData)
+
+            if (this.isEdit) {
+                updatePost(this.post.id, this.formData).then(response => {
+                    this.$router.push({name: 'post.index'})
+                }).catch(err => {
+                    this.loading = false
+                    if(err.response.status === 400) {
+                        this.$refs.form.setErrors(err.response.data.data)
+                    }
+                })
+            } else {
+                createPost(this.formData).then(response => {
+                    this.$router.push({name: 'post.index'})
+                }).catch(err => {
+                    this.loading = false
+
+                    if(err.response.status === 400) {
+                        this.$refs.form.setErrors(err.response.data.data)
+                    }
+                })
+            }
 		},
 		loadLanguages() {
-			this.languages.forEach( (item, value) => {
-				if(this.post[item.lang_code] === undefined) {
-					this.post[item.lang_code] = {}
-				}
-			})
+            let _self = this
+            this.languages.forEach( (item, value) => {
+                if(typeof _self.post[item.lang_code] == 'undefined') {
+                    _self.post[item.lang_code] = {}
+                }
+            })
 		},
+        handleImageAdded: function(file, Editor, cursorLocation, resetUploader) {
+            let formData = new FormData();
+            formData.append("files", file);
+
+            uploadMediaWithProgress({
+                url: `media`,
+                method: 'post',
+                data: formData
+            }).then(response => {
+                const url = response.data[0].url; // Get url from response
+                Editor.insertEmbed(cursorLocation, "image", url);
+                resetUploader();
+            }).catch(err=>{ this.loading = false})
+        },
 		handleMedia(payload) {
-			this.post.image = payload.image;
-			this.post.video_url = payload.video_url;
-			
-			console.log(this.post);
+			payload.forEach(async (element) => {
+                this.focusEditor()
+                const Editor = this.quill
+                const range = Editor.getSelection()
+                const cursorLocation = await range.index
+                await Editor.editor.insertEmbed(cursorLocation, 'image', element)
+            })
 		},
 		handleMediaDialog(payload) {
 			this.mediaDialog = payload
-		}
+		},
+        onFocus(quill) {
+            this.quill = quill
+        },
+        openModal() {
+	        this.mediaDialog = true
+        },
+        focusEditor() {
+            this.$refs.editor[0].quill.focus()
+        },
 	}
 }
 </script>

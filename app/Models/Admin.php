@@ -52,4 +52,11 @@ class Admin extends Authenticatable implements JWTSubject
 	{
 		return [];
 	}
+
+    /**
+     * Get user posts sets.
+     */
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }

@@ -14,6 +14,17 @@ const mix = require('laravel-mix');
 mix.js('resources/assets/panel/js/app.js', 'public/assets/panel/js').vue({ version: 2 })
     .sass('resources/assets/panel/sass/app.scss', 'public/assets/panel/css');
 
+mix.webpackConfig(webpack => {
+    return {
+        plugins: [
+            new webpack.ProvidePlugin({
+                'window.Quill': 'quill',
+                'Quill': 'quill'
+            })
+        ]
+    };
+});
+
 mix.webpackConfig({
     devServer: {
         port: '8080'

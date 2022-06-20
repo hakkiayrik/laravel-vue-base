@@ -17,8 +17,8 @@ class Image extends JsonResource
 		return [
 			'id' => $this->id,
 			'url' =>  asset($this->url),
-			'name' =>  asset($this->name),
-			'description' =>  asset($this->description),
+			'name' =>  $this->name,
+			'description' =>  $this->description,
 		];
     }
 }

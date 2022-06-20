@@ -26,7 +26,7 @@ export function createPost(data) {
 export function updatePost(id, data) {
 	return request({
 		url: `post/${id}`,
-		method: 'patch',
+		method: 'post',
 		data
 	})
 }

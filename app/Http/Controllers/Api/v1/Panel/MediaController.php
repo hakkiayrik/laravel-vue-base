@@ -8,6 +8,7 @@ use App\Http\Resources\ImageCollection;
 use App\Models\Image;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
 {
@@ -35,7 +36,8 @@ class MediaController extends Controller
     {
 		$image = $request->file("files");
 		$path = config('variables.path.media');
-		/*try {
+
+		try {
 			$extension = $image->extension();
 			$fileName = create_file_name($path, $extension);
 			$image->storeAs($path, $fileName);
@@ -44,13 +46,12 @@ class MediaController extends Controller
 			$imageData['name'] = $fileName;
 			$image = Image::create($imageData);
 			$uploadRequest[] = $image;
-
 			$uploadRequest['success'] = $image->name . __('panel.file_uploaded');
 		} catch (\Exception $e) {
 			$uploadRequest['error'] = $image->name . __('panel.file_uploaded') . "(" . $e->getMessage() . ")";
 		}
 
-		return $this->success($uploadRequest);*/
+		return $this->success($uploadRequest);
 	}
 
     /**
@@ -85,6 +86,15 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $image = Image::findOrFail($id);
+        $path = config('variables.path.media');
+        $fileName = $image->name;
+        $image->delete();
+
+        //Delete file
+        Storage::delete($path . $fileName);
+
+
+        return $this->success('', __('panel.transaction_success'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Category extends JsonResource
@@ -16,11 +17,12 @@ class Category extends JsonResource
     {
     	$data = [
 			'id' => $this->id,
-			'name' => $this->name,
-			'description' => $this->description,
-			'slug' => $this->slug,
-			'order_by' => $this->order_by,
-			'created_at' => $this->created_at->format('Y-m-d H:i:s')
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'description' => $this->description,
+			'display_order' => $this->display_order,
+			'status' => $this->status,
+			'created_at' => Carbon::parse($this->created_at)->diffForHumans(now())
 		];
 
     	$data = array_merge($data, $this->getTranslationsArray());

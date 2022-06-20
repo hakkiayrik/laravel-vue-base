@@ -18,8 +18,8 @@ class CreateCategoryTranslationsTable extends Migration
 			$table->unsignedBigInteger('category_id');
 			$table->string('locale')->index();
 			$table->string("name");
-			$table->string("description")->nullable();
-			$table->string('slug')->unique();
+            $table->string('slug')->unique();
+            $table->text("description")->nullable();
         });
 
 		Schema::table('category_translations', function($table) {

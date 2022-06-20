@@ -132,7 +132,9 @@ class AuthController extends BaseController
 	public function updateUser(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
-			'name' => 'required|string|max:100|min:2',
+			'first_name' => 'required|string|max:100|min:2',
+			'last_name' => 'required|string|max:100|min:2',
+			'email' => 'required|email|unique:admins,email,' . auth()->user()->id,
 		]);
 
 		if($validator->fails()){
@@ -147,7 +149,9 @@ class AuthController extends BaseController
 			$user->avatar_id = $requestAvatar["id"];
 		}
 
-		$user->name = $request->name;
+		$user->first_name = $request->first_name;
+		$user->last_name = $request->last_name;
+		$user->email = $request->email;
 
 		$user->save();
 

@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import PostForm from './components/PostForm.vue'
+import PostForm from './components/Form.vue'
 export default {
 	name: "create",
 	components: {
-		PostForm
+        PostForm
 	}
 }
 </script>

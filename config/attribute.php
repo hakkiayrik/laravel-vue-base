@@ -4,20 +4,20 @@ return [
 
 	'models' => [
 
-		'set' => App\Models\Set::class,
+		'attribute_group' => App\Models\AttributeGroup::class,
 		'attribute' => App\Models\Attribute::class,
 		'attribute_value' => App\Models\AttributeValue::class
 	],
 
 	'table_names' => [
 
-		'sets' => 'sets',
+		'attribute_groups' => 'attribute_groups',
 		'attributes' => 'attributes',
 		'attribute_values' => 'attribute_values',
-		'model_has_sets' => 'model_has_sets',
+		'model_has_attribute_groups' => 'model_has_attribute_groups',
 		'model_has_attributes' => 'model_has_attributes',
 		'model_has_values' => 'model_has_values',
-		'set_has_attributes' => 'set_has_attributes',
+		'attribute_group_has_attributes' => 'attribute_group_has_attributes',
 	],
 
 	'column_names' => [

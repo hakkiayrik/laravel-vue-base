@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\Panel\AdminController;
+use App\Http\Controllers\Api\v1\Panel\AttributeController;
 use App\Http\Controllers\Api\v1\Panel\AuthController;
 use App\Http\Controllers\Api\v1\Panel\AvatarController;
 use App\Http\Controllers\Api\v1\Panel\CategoryController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Api\v1\Panel\MediaController;
 use App\Http\Controllers\Api\v1\Panel\PostController;
 use App\Http\Controllers\Api\v1\Panel\RoleController;
 use App\Http\Controllers\Api\v1\Panel\UserController;
+use App\Http\Controllers\Api\v1\Panel\LanguageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,13 +36,15 @@ Route::namespace('Api\v1')->prefix('v1')->group(function () {
 		Route::post('password/forgot', [AuthController::class, 'forgotPassword']);
 		Route::get('password/find/{token}', [AuthController::class, 'findToken']);
 		Route::match(['PUT', 'PATCH'], 'password/reset', [AuthController::class, 'resetPassword']);
-		Route::post('logout', [AuthController::class, 'logout']);
 
 		Route::middleware('auth:panel')->group(function (){
 
 			Route::get('avatar', [AvatarController::class, 'index'])->name('avatar.index');
 
 			Route::get('log', [LogController::class, 'index'])->name('log.index')->middleware(['permission:access-log']);
+
+            Route::get('language', [LanguageController::class, 'index'])->name('language.index')->middleware(['permission:access-language']);
+            Route::match('post', 'language/active/{language}', [LanguageController::class, 'updateActive'])->name('language.update-active')->middleware(['permission:edit-language']);
 
 			Route::get('profile', [AuthController::class, 'getUser']);
 			Route::match(['PUT', 'PATCH'], 'profile', [AuthController::class, 'updateUser']);
@@ -69,15 +73,34 @@ Route::namespace('Api\v1')->prefix('v1')->group(function () {
 			Route::post('category', [CategoryController::class, 'store'])->name('category.store')->middleware(['permission:create-category']);
 			Route::match(['PUT', 'PATCH'], 'category/{category}', [CategoryController::class, 'update'])->name('category.update')->middleware(['permission:edit-category']);
 			Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.delete')->middleware(['permission:delete-category']);
+            Route::post('category/update/sort', [CategoryController::class, 'updateDisplayOrder'])->name('category.update-order')->middleware(['permission:edit-category']);
 
 			Route::get('post', [PostController::class, 'index'])->name('post.index')->middleware(['permission:access-post']);
 			Route::get('post/{post}', [PostController::class, 'show'])->name('post.show')->middleware(['permission:edit-post']);
 			Route::post('post', [PostController::class, 'store'])->name('post.store')->middleware(['permission:create-post']);
-			Route::match(['PUT', 'PATCH'], 'post/{post}', [PostController::class, 'update'])->name('post.update')->middleware(['permission:edit-post']);
+			Route::post('post/{post}', [PostController::class, 'update'])->name('post.update')->middleware(['permission:edit-post']);
 			Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.delete')->middleware(['permission:delete-post']);
 
 			Route::get('media', [MediaController::class, 'index'])->name('media.index');
 			Route::post('media', [MediaController::class, 'store'])->name('media.store')->middleware(['permission:create-media']);
+			Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.delete')->middleware(['permission:delete-media']);
+
+            Route::get('attribute/group', [AttributeController::class, 'index'])->name('attribute-group.index')->middleware(['permission:access-attribute']);
+            Route::post('attribute/group', [AttributeController::class, 'store'])->name('attribute-group.store')->middleware(['permission:create-attribute']);
+            Route::get('attribute/group/{group}', [AttributeController::class, 'show'])->name('attribute-group.show')->middleware(['permission:edit-attribute']);
+            Route::match(['PUT', 'PATCH'], 'attribute/group/{group}', [AttributeController::class, 'update'])->name('attribute-group.update')->middleware(['permission:edit-attribute']);
+            Route::delete('attribute/group/{group}', [AttributeController::class, 'destroy'])->name('attribute-group.delete')->middleware(['permission:delete-attribute']);
+
+            Route::get('attribute', [AttributeController::class, 'getAttributes'])->name('attribute.index')->middleware(['permission:access-attribute']);
+            Route::get('attribute/{attribute}', [AttributeController::class, 'getAttribute'])->name('attribute.show')->middleware(['permission:edit-attribute']);
+            Route::post('attribute', [AttributeController::class, 'addAttribute'])->name('attribute-group.store')->middleware(['permission:create-attribute']);
+            Route::match(['PUT', 'PATCH'], 'attribute/{group}', [AttributeController::class, 'editAttribute'])->name('attribute.update')->middleware(['permission:edit-attribute']);
+            Route::delete('attribute/{attribute}', [AttributeController::class, 'deleteAttribute'])->name('attribute.delete')->middleware(['permission:delete-attribute']);
+
+            Route::post('attribute/add/group/{group}', [AttributeController::class, 'addAttributeToGroup'])->name('attribute-add-group.store')->middleware(['permission:create-attribute']);
+
+
+            Route::post('logout', [AuthController::class, 'logout']);
 		});
 	});
 });

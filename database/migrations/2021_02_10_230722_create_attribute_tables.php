@@ -23,18 +23,22 @@ class CreateAttributeTables extends Migration
 		Schema::create($tableNames["attributes"], function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('label');
-			$table->string('name');
+			$table->string('html_name');
 			$table->string('type');
-			$table->string('option')->nullable();
+			$table->bigInteger('display_order')->default(0);
+			$table->string('options')->nullable();
 
-			$table->unique(['name']);
+			$table->unique(['html_name']);
 		});
 
-		Schema::create($tableNames["sets"], function (Blueprint $table) {
+		Schema::create($tableNames["attribute_groups"], function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('name');
+			$table->tinyInteger('status')->default(1);
+			$table->timestamps();
 
 			$table->unique(['name']);
+
 		});
 
 		Schema::create($tableNames["attribute_values"], function (Blueprint $table) {
@@ -55,18 +59,18 @@ class CreateAttributeTables extends Migration
 			$table->primary(['attribute_id', $columnNames['model_morph_key'], 'model_type'], 'model_has_attributes_attribute_model_type_primary');
 		});
 
-		Schema::create($tableNames['model_has_sets'], function (Blueprint $table) use ($tableNames, $columnNames) {
-			$table->unsignedBigInteger('set_id');
+		Schema::create($tableNames['model_has_attribute_groups'], function (Blueprint $table) use ($tableNames, $columnNames) {
+			$table->unsignedBigInteger('attribute_group_id');
 			$table->string('model_type');
 			$table->unsignedBigInteger('model_id');
 
-			$table->foreign('set_id')
+			$table->foreign('attribute_group_id')
 				->references('id')
-				->on($tableNames['sets'])
+				->on($tableNames['attribute_groups'])
 				->onDelete('cascade');
 
 
-			$table->primary(['set_id', $columnNames['model_morph_key'], 'model_type'], 'model_has_sets_set_model_type_primary');
+			$table->primary(['attribute_group_id', $columnNames['model_morph_key'], 'model_type'], 'model_has_groups_attribute_group_model_type_primary');
 		});
 
 		Schema::create($tableNames['model_has_values'], function (Blueprint $table) use ($tableNames, $columnNames) {
@@ -88,21 +92,21 @@ class CreateAttributeTables extends Migration
 			$table->primary(['attribute_id', 'value_id', $columnNames['model_morph_key'], 'model_type'], 'model_has_attributes_attribute_model_type_primary');
 		});
 
-		Schema::create('set_has_attributes', function (Blueprint $table) use ($tableNames) {
+		Schema::create('attribute_group_has_attributes', function (Blueprint $table) use ($tableNames) {
 			$table->unsignedBigInteger('attribute_id');
-			$table->unsignedBigInteger('set_id');
+			$table->unsignedBigInteger('attribute_group_id');
 
 			$table->foreign('attribute_id')
 				->references('id')
 				->on($tableNames['attributes'])
 				->onDelete('cascade');
 
-			$table->foreign('set_id')
+			$table->foreign('attribute_group_id')
 				->references('id')
-				->on($tableNames['sets'])
+				->on($tableNames['attribute_groups'])
 				->onDelete('cascade');
 
-			$table->primary(['attribute_id', 'set_id'], 'set_has_attributes_attribute_id_set_id_primary');
+			$table->primary(['attribute_id', 'attribute_group_id'], 'group_has_attributes_attribute_id_attribute_groups_id_primary');
 		});
     }
 
@@ -119,10 +123,10 @@ class CreateAttributeTables extends Migration
 			throw new \Exception('Error: config/attribute.php not found and defaults could not be merged. Please publish the package configuration before proceeding, or drop the tables manually.');
 		}
 
-        Schema::dropIfExists($tableNames["set_has_attributes"]);
-        Schema::dropIfExists($tableNames["model_has_sets"]);
+        Schema::dropIfExists($tableNames["attribute_group_has_attributes"]);
+        Schema::dropIfExists($tableNames["model_has_attribute_group"]);
         Schema::dropIfExists($tableNames["model_has_permissions"]);
-        Schema::dropIfExists($tableNames["sets"]);
+        Schema::dropIfExists($tableNames["attribute_groups"]);
         Schema::dropIfExists($tableNames["attributes"]);
         Schema::dropIfExists($tableNames["attribute_values"]);
     }

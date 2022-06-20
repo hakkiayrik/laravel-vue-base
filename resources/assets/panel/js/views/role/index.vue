@@ -3,7 +3,7 @@
 		<v-container fluid>
 			<v-row>
 				<v-col cols="12">
-					<v-data-table :headers="headers" :items="desserts" sort-by="calories" :laoding="loading" :options.sync="options">
+					<v-data-table :headers="headers" :items="desserts" :laoding="loading" :options.sync="options">
 						<template v-slot:top>
 							<v-toolbar flat>
 								<v-toolbar-title>{{ $t('menus.roles.index') }}</v-toolbar-title>
@@ -36,27 +36,6 @@ export default {
 	name: "index",
 	data() {
 		return {
-			headers: [
-				{
-					text: this.$i18n.t('global.id'),
-					align: 'left',
-					value: 'id',
-					width:'5%'
-				
-				},
-				{
-					text: this.$i18n.t('pages.roles.role_name'),
-					align: 'left',
-					value: 'name'
-				},
-				{
-					text: this.$i18n.t('global.actions'),
-					align: 'center',
-					value: 'actions',
-					width: "5%",
-					sortable: false
-				},
-			],
 			desserts: [],
 			options: {},
 			loading: false
@@ -73,6 +52,32 @@ export default {
 			deep: true,
 		},
 	},
+    computed: {
+        headers() {
+            return  [
+                {
+                    text: this.$i18n.t('global.id'),
+                    align: 'left',
+                    value: 'id',
+                    width:'5%'
+
+                },
+                {
+                    text: this.$i18n.t('pages.roles.role_name'),
+                    align: 'left',
+                    value: 'name'
+                },
+                {
+                    text: this.$i18n.t('global.actions'),
+                    align: 'center',
+                    value: 'actions',
+                    width: "5%",
+                    sortable: false
+                },
+            ]
+
+        }
+    },
 	methods: {
 		initialize() {
 			getRoles().then(response => {
